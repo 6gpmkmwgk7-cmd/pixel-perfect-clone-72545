@@ -341,6 +341,37 @@ function HomePage() {
         </div>
       </section>
 
+      {/* RESULTS METRICS */}
+      <section className="relative overflow-hidden bg-navy py-20 text-white">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
+        <div className="absolute inset-0 bg-mesh opacity-60" />
+        <div className="absolute -top-32 left-1/3 h-72 w-72 rounded-full bg-cyan/20 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider text-cyan">Proven Impact</p>
+            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
+              Results-Focused <span className="text-gradient">Growth Systems</span>
+            </h2>
+          </div>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {resultsMetrics.map((m, i) => (
+              <Reveal key={m.label} variant="up" delay={i * 100}>
+                <div className="glass relative overflow-hidden rounded-3xl border border-white/15 p-8 text-center lift-glow">
+                  <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-cyan/20 blur-2xl" />
+                  <Counter
+                    to={m.value}
+                    suffix={m.suffix}
+                    className="relative font-display text-5xl font-bold text-shimmer md:text-6xl"
+                  />
+                  <p className="relative mt-3 text-sm font-medium text-white/70">{m.label}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       {/* WHY ELEVATE SOCIAL EXISTS */}
       <section className="relative overflow-hidden py-24">
         <div className="absolute inset-0 grid-pattern opacity-30" />
