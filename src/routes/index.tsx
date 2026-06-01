@@ -626,44 +626,170 @@ function HomePage() {
       </section>
 
       {/* FOUNDER */}
-      <section className="bg-secondary/40 py-24">
-        <div className="mx-auto max-w-5xl px-6 text-center">
+      <section className="relative overflow-hidden bg-secondary/40 py-24">
+        <div className="absolute -top-32 -left-20 h-80 w-80 rounded-full bg-electric/10 blur-3xl" />
+        <div className="absolute -bottom-32 -right-20 h-80 w-80 rounded-full bg-purple/10 blur-3xl" />
+        <div className="relative mx-auto max-w-5xl px-6">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-electric/30 bg-electric/10 px-4 py-1.5 text-xs font-semibold text-electric">
-              <ShieldCheck className="h-3.5 w-3.5" /> Founder-Led Agency
+            <div className="text-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-electric/30 bg-electric/10 px-4 py-1.5 text-xs font-semibold text-electric">
+                <ShieldCheck className="h-3.5 w-3.5" /> Founder-Led Agency
+              </div>
+              <h2 className="mt-5 font-display text-4xl font-bold md:text-5xl">
+                Meet The <span className="text-gradient">Founder</span>
+              </h2>
             </div>
-            <h2 className="mt-5 font-display text-4xl font-bold md:text-5xl">
-              Built by Entrepreneurs <span className="text-gradient">for Entrepreneurs</span>
-            </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-              Elevate Social is a founder-led agency built for small businesses that need
-              practical, affordable, and modern growth systems. We focus on helping businesses
-              use AI-powered marketing and automation tools to operate more efficiently and
-              build a stronger online presence.
-            </p>
           </Reveal>
 
-          {/* Animated counters */}
-          <div className="mt-14 grid gap-6 sm:grid-cols-3">
-            {[
-              { v: 7, suffix: "+", l: "Industries Served" },
-              { v: 24, suffix: "/7", l: "Automation Uptime" },
-              { v: 100, suffix: "%", l: "AI-Powered Stack" },
-            ].map((c, i) => (
-              <Reveal key={c.l} variant="up" delay={i * 120}>
-                <div className="rounded-2xl border border-border bg-card p-7 lift-glow">
-                  <Counter
-                    to={c.v}
-                    suffix={c.suffix}
-                    className="font-display text-5xl font-bold text-gradient"
-                  />
-                  <p className="mt-2 text-sm font-medium text-muted-foreground">{c.l}</p>
+          <Reveal delay={120}>
+            <div className="mx-auto mt-12 max-w-3xl space-y-5 text-lg leading-relaxed text-muted-foreground">
+              <p>Hi, I'm Laraib, founder of Elevate Social.</p>
+              <p>I started Elevate Social with one goal:</p>
+              <p className="rounded-2xl border-l-4 border-cyan bg-card/60 p-5 font-medium italic text-foreground">
+                To help small businesses compete with larger companies by using AI, automation,
+                content creation, and modern marketing systems — without paying expensive agency fees.
+              </p>
+              <p>
+                Many local businesses struggle with inconsistent social media, outdated websites,
+                and lack of time to market themselves effectively.
+              </p>
+              <p>
+                At Elevate Social, we build systems that work around the clock — helping businesses
+                generate leads, improve their online presence, and save valuable time through
+                AI-powered automation.
+              </p>
+              <p>
+                Whether you're a restaurant, contractor, plumber, cleaning company, or local service
+                provider, our mission is to help you grow smarter, not harder.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {founderStats.map((s, i) => (
+              <Reveal key={s.t} variant="up" delay={i * 90}>
+                <div className="flex h-full items-center gap-3 rounded-2xl border border-border bg-card p-5 lift-glow">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-accent text-white">
+                    <s.icon className="h-5 w-5" />
+                  </div>
+                  <p className="font-display text-sm font-semibold">{s.t}</p>
                 </div>
               </Reveal>
             ))}
           </div>
+
+          <div className="mt-12 text-center">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-105"
+            >
+              Book a Free Consultation <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
+
+      {/* CASE STUDIES */}
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider text-electric">Case Studies</p>
+          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
+            Featured <span className="text-gradient">Success Stories</span>
+          </h2>
+          <p className="mt-5 text-muted-foreground">
+            Examples of branding, content, and automation systems built to help businesses grow.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {caseStudies.map((c, i) => (
+            <Reveal key={c.name} variant="up" delay={i * 90}>
+              <div className="group flex h-full flex-col rounded-3xl border border-border bg-card p-7 transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-elegant">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-accent text-white transition group-hover:scale-110">
+                  <c.icon className="h-6 w-6" />
+                </div>
+                <span className="mt-5 inline-flex w-fit rounded-full bg-electric/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-electric">
+                  {c.industry}
+                </span>
+                <h3 className="mt-3 font-display text-xl font-bold">{c.name}</h3>
+
+                <div className="mt-5 space-y-4 text-sm">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan">Challenge</p>
+                    <p className="mt-1 text-muted-foreground">{c.challenge}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan">Solution</p>
+                    <p className="mt-1 text-muted-foreground">{c.solution}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan">Results</p>
+                    <ul className="mt-2 space-y-1.5">
+                      {c.results.map((r) => (
+                        <li key={r} className="flex items-start gap-2">
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan" />
+                          <span>{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <Link
+                  to="/case-studies"
+                  className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-electric transition group-hover:gap-3"
+                >
+                  View Project <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="bg-secondary/50 py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Testimonials</p>
+            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
+              What <span className="text-gradient">Businesses Say</span>
+            </h2>
+          </div>
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <Reveal key={t.name} variant="up" delay={i * 100}>
+                <div className="group relative h-full rounded-3xl border border-border bg-card p-7 transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-elegant">
+                  <Quote className="absolute right-6 top-6 h-10 w-10 text-cyan/20" />
+                  <div className="flex gap-1 text-gold">
+                    {Array.from({ length: 5 }).map((_, k) => (
+                      <Star key={k} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="mt-5 text-sm leading-relaxed text-foreground">"{t.quote}"</p>
+                  <div className="mt-6 flex items-center gap-3 border-t border-border pt-5">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-accent text-sm font-bold text-white">
+                      {t.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-display text-sm font-semibold">{t.name}</p>
+                      <p className="text-xs text-muted-foreground">{t.role}</p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link
+              to="/case-studies"
+              className="inline-flex items-center gap-2 rounded-full border border-electric/40 bg-electric/10 px-6 py-3 text-sm font-semibold text-electric transition hover:bg-electric/20"
+            >
+              <TrendingUp className="h-4 w-4" /> See How We Help Businesses Grow
+            </Link>
+          </div>
+        </div>
+      </section>
+
 
       {/* FAQ */}
       <section className="mx-auto max-w-3xl px-6 py-24">
