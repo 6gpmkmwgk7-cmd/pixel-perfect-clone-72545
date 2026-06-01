@@ -39,7 +39,7 @@ export function SiteHeader() {
                 <img
                   src={logo}
                   alt="Elevate Socials Agency"
-                  className="h-20 w-20 rounded-2xl object-contain bg-white p-1.5 shadow-[0_0_30px_rgba(6,182,212,0.3)] ring-2 ring-cyan/30 transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] animate-logo-in"
+                  className="h-14 w-14 object-contain bg-white p-1 shadow-elegant ring-1 ring-border transition-all duration-500 group-hover:scale-105 group-hover:shadow-glow animate-logo-in rounded-full"
                 />
                 {/* animated ring */}
                 <span className="pointer-events-none absolute -inset-1 rounded-2xl ring-2 ring-cyan/20 animate-ping-soft" />
