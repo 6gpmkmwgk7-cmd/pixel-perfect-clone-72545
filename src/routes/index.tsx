@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/Reveal";
+import { Counter } from "@/components/Counter";
 import { ParticleField } from "@/components/ParticleField";
 import { AIDashboardMockup } from "@/components/AIDashboardMockup";
 import { NetworkNodes } from "@/components/NetworkNodes";
@@ -14,6 +15,7 @@ import {
   Plus, Workflow, Brain, Clock, Sparkle,
   Inbox, ClipboardList, UserCog, Calendar, ShieldCheck, BadgeCheck,
   Star, Quote, TrendingUp, Utensils, Flame, Megaphone,
+  Linkedin, CreditCard, Lock, Building2,
 } from "lucide-react";
 
 const founderStats = [
@@ -98,10 +100,10 @@ export const Route = createFileRoute("/")({
 });
 
 const trustBadges = [
-  "Powered by OpenAI",
-  "Built with n8n Automation",
-  "Founder-Led Agency",
-  "Worldwide Service",
+  "AI Automation",
+  "Social Media Growth",
+  "Website Design",
+  "Lead Generation",
 ];
 
 const whyAi = [
