@@ -5,7 +5,7 @@ import { ParticleField } from "@/components/ParticleField";
 import { AIDashboardMockup } from "@/components/AIDashboardMockup";
 import { NetworkNodes } from "@/components/NetworkNodes";
 import { LogoMarquee } from "@/components/LogoMarquee";
-import { Counter } from "@/components/Counter";
+
 import heroBg from "@/assets/hero-bg.jpg";
 import {
   ArrowRight, Sparkles, Bot, Zap, Globe, Share2,
