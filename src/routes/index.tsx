@@ -15,7 +15,7 @@ import {
   Plus, Workflow, Brain, Clock, Sparkle,
   Inbox, ClipboardList, UserCog, Calendar, ShieldCheck, BadgeCheck,
   Star, Quote, TrendingUp, Utensils, Flame, Megaphone,
-  Linkedin, CreditCard, Lock, Building2,
+  CreditCard, Lock,
 } from "lucide-react";
 
 const founderStats = [
