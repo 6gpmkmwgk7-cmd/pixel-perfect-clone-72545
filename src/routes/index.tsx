@@ -13,7 +13,7 @@ import {
   UtensilsCrossed, Wrench, Trees, Plug, HardHat, Brush,
   Plus, Workflow, Brain, Clock, Sparkle,
   Inbox, ClipboardList, UserCog, Calendar, ShieldCheck, BadgeCheck,
-  Star, Quote, TrendingUp, MessageCircle, Utensils, Flame, Megaphone,
+  Star, Quote, TrendingUp, Utensils, Flame, Megaphone,
 } from "lucide-react";
 
 const founderStats = [
