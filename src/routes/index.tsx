@@ -290,15 +290,15 @@ function HomePage() {
             </Reveal>
             <Reveal delay={120}>
               <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] md:text-7xl">
-                AI-Powered Marketing & Automation for{" "}
-                <span className="text-shimmer">Small Business Growth</span>
+                AI-Powered Marketing & Automation That Helps{" "}
+                <span className="text-shimmer">Small Businesses Grow Faster</span>
               </h1>
             </Reveal>
             <Reveal delay={240}>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
-                Elevate Socials helps restaurants, contractors, plumbers, and local businesses
-                attract more customers through AI-powered content creation, social media
-                management, and automation systems.
+                We help restaurants, contractors, plumbers, landscapers, cleaning companies, and local
+                businesses generate more leads, save time, and grow through AI-powered content,
+                automation, websites, and marketing systems.
               </p>
             </Reveal>
             <Reveal delay={360}>
@@ -307,14 +307,14 @@ function HomePage() {
                   to="/free-audit"
                   className="btn-premium group inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-105"
                 >
-                  Get Your Free AI Growth Audit
+                  🚀 Book Your Free AI Growth Audit
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                 </Link>
                 <Link
-                  to="/contact"
+                  to="/case-studies"
                   className="btn-premium inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
                 >
-                  Book a Free Strategy Call
+                  📈 View Case Studies
                 </Link>
               </div>
             </Reveal>
