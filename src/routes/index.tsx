@@ -465,13 +465,43 @@ function HomePage() {
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* HOW WE HELP YOU GROW */}
+      <section className="relative overflow-hidden py-24">
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Our Process</p>
+            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
+              How We Help You <span className="text-gradient">Grow</span>
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              A clear, proven 4-step path from audit to ongoing optimization.
+            </p>
+          </div>
+          <div className="relative mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="pointer-events-none absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-cyan/40 to-transparent lg:block" />
+            {growthSteps.map((s, i) => (
+              <Reveal key={s.n} variant="up" delay={i * 120}>
+                <div className="relative h-full rounded-3xl border border-border bg-card p-7 transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-glow">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-gold text-lg font-bold text-white shadow-glow">
+                    {s.n}
+                  </div>
+                  <h3 className="mt-5 font-display text-lg font-bold">{s.t}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{s.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES (Pricing) */}
       <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Services</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Pricing</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              Three core services to launch, grow, and automate
+              Transparent plans built to <span className="text-gradient">scale with you</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
               Start where you are. Scale into full AI-powered automation when you're ready.
@@ -483,18 +513,23 @@ function HomePage() {
                 key={s.title}
                 className={`relative flex flex-col rounded-3xl border p-8 transition hover:-translate-y-1 ${
                   s.featured
-                    ? "border-cyan bg-navy text-white shadow-glow"
+                    ? "border-cyan bg-navy text-white shadow-glow lg:scale-105"
                     : "border-border bg-card hover:border-electric/40 hover:shadow-elegant"
                 }`}
               >
+                {s.popular && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-gold px-4 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-glow">
+                    🔥 Most Popular
+                  </span>
+                )}
                 <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${s.featured ? "bg-gradient-gold" : "bg-gradient-accent"} text-white`}>
                   <s.icon className="h-6 w-6" />
                 </div>
-                <span className={`mt-5 inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold ${s.featured ? "bg-cyan/20 text-cyan" : "bg-electric/10 text-electric"}`}>
-                  {s.badge}
-                </span>
-                <h3 className="mt-4 font-display text-2xl font-bold">{s.title}</h3>
+                <h3 className="mt-5 font-display text-2xl font-bold">{s.title}</h3>
                 <p className={`mt-2 text-sm ${s.featured ? "text-white/70" : "text-muted-foreground"}`}>{s.desc}</p>
+                <div className="mt-5 flex items-baseline gap-1">
+                  <span className={`font-display text-4xl font-bold ${s.featured ? "text-white" : "text-foreground"}`}>{s.badge}</span>
+                </div>
                 <ul className="mt-6 space-y-2.5">
                   {s.items.map((i) => (
                     <li key={i} className="flex items-start gap-2 text-sm">
@@ -518,6 +553,38 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* SECURE PAYMENT METHODS */}
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-10 md:p-14">
+          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-cyan/10 blur-3xl" />
+          <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-purple/10 blur-3xl" />
+          <div className="relative mx-auto max-w-3xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-cyan/30 bg-cyan/10 px-4 py-1.5 text-xs font-semibold text-cyan">
+              <Lock className="h-3.5 w-3.5" /> Secure Checkout
+            </div>
+            <h2 className="mt-5 font-display text-4xl font-bold md:text-5xl">
+              Secure <span className="text-gradient">Payment Options</span>
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              We offer secure and flexible payment methods for clients worldwide.
+            </p>
+          </div>
+          <div className="relative mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {paymentMethods.map((p) => (
+              <div key={p.name} className="flex h-24 flex-col items-center justify-center gap-2 rounded-2xl border border-border bg-background/60 p-4 backdrop-blur transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-glow">
+                <span className="text-2xl font-bold tracking-tight text-foreground">{p.icon || <CreditCard className="h-6 w-6 text-electric" />}</span>
+                <p className="text-center text-xs font-semibold text-muted-foreground">{p.name}</p>
+              </div>
+            ))}
+          </div>
+          <p className="relative mt-10 flex items-center justify-center gap-2 text-center text-xs text-muted-foreground">
+            <ShieldCheck className="h-4 w-4 text-cyan" />
+            All payments are processed through secure and encrypted payment gateways.
+          </p>
+        </div>
+      </section>
+
 
       {/* MEET THE AI SYSTEMS */}
       <section className="relative overflow-hidden bg-navy py-24 text-white">
