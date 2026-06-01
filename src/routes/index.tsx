@@ -13,7 +13,75 @@ import {
   UtensilsCrossed, Wrench, Trees, Plug, HardHat, Brush,
   Plus, Workflow, Brain, Clock, Sparkle,
   Inbox, ClipboardList, UserCog, Calendar, ShieldCheck, BadgeCheck,
+  Star, Quote, TrendingUp, MessageCircle, Utensils, Flame, Megaphone,
 } from "lucide-react";
+
+const founderStats = [
+  { icon: Brain, t: "AI-Powered Solutions" },
+  { icon: TrendingUp, t: "Business Growth Systems" },
+  { icon: Sparkle, t: "Content Creation" },
+  { icon: Workflow, t: "Marketing Automation" },
+];
+
+const caseStudies = [
+  {
+    icon: Utensils,
+    name: "Masala Mingle Catering",
+    industry: "Food & Catering",
+    challenge: "Needed a professional brand identity and social media presence to attract more catering customers.",
+    solution: "Created menu designs, promotional content, social media graphics, and a content strategy focused on community engagement.",
+    results: [
+      "Professional brand image established",
+      "Consistent social media presence",
+      "Increased customer inquiries",
+      "Improved menu presentation",
+    ],
+  },
+  {
+    icon: Flame,
+    name: "Premium Shawarma",
+    industry: "Restaurant",
+    challenge: "Low engagement and limited online visibility despite having quality food and competitive pricing.",
+    solution: "Created promotional campaigns, product photography concepts, review generation strategies, and social media content plans.",
+    results: [
+      "Improved online presence",
+      "Increased customer engagement",
+      "Enhanced menu presentation",
+      "Better brand recognition",
+    ],
+  },
+  {
+    icon: Megaphone,
+    name: "Elevate Social",
+    industry: "Marketing & Automation",
+    challenge: "Create an agency capable of delivering high-value marketing services using AI and automation.",
+    solution: "Built AI workflows, lead generation systems, website assets, content frameworks, and client onboarding processes.",
+    results: [
+      "Scalable service delivery",
+      "Automated lead management",
+      "Faster content production",
+      "Streamlined client workflows",
+    ],
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Elevate Social helped us improve our online presence and create a more professional brand image. Their content strategy gave us a clear direction and helped us engage with customers more effectively.",
+    name: "Sarah M.",
+    role: "Restaurant Owner",
+  },
+  {
+    quote: "The automation systems and marketing support provided by Elevate Social saved us hours every week. Everything became more organized and efficient.",
+    name: "Michael R.",
+    role: "Local Service Business Owner",
+  },
+  {
+    quote: "Professional, responsive, and innovative. Elevate Social helped us understand how AI can support business growth without overwhelming us with complicated technology.",
+    name: "David K.",
+    role: "Small Business Owner",
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
