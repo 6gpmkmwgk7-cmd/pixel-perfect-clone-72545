@@ -127,18 +127,17 @@ const launchSystem = [
 const services = [
   {
     icon: Rocket,
-    badge: "Starting at $99",
+    badge: "$149",
     title: "Business Presence Launch",
     desc: "Get your business looking professional online in days.",
     items: ["Facebook Setup", "Instagram Setup", "LinkedIn Setup", "Professional Bio Writing", "CTA Optimization", "Keywords & Hashtags"],
   },
   {
     icon: Share2,
-    badge: "Starting at $199",
+    badge: "$299",
     title: "AI Content Engine",
     desc: "AI-powered content systems that keep your brand consistent.",
     items: ["30-Day Content Calendar", "30 Captions", "Hashtag Strategy", "Content Planning", "Canva Design Briefs"],
-    featured: true,
   },
   {
     icon: Bot,
@@ -146,7 +145,31 @@ const services = [
     title: "AI Growth System",
     desc: "Complete AI system for lead generation and business automation.",
     items: ["Lead Capture Systems", "AI Automation", "Client Onboarding Automation", "Appointment Booking Workflows", "AI Assistant Setup"],
+    featured: true,
+    popular: true,
   },
+];
+
+const resultsMetrics = [
+  { value: 100, suffix: "+", label: "Content Assets Created" },
+  { value: 10, suffix: "+", label: "Automation Workflows Built" },
+  { value: 3, suffix: "+", label: "Industries Served" },
+  { value: 24, suffix: "/7", label: "AI-Powered Systems" },
+];
+
+const growthSteps = [
+  { n: "01", t: "Free Growth Audit", d: "We review your current presence and uncover the biggest growth opportunities." },
+  { n: "02", t: "Strategy & Planning", d: "We design a tailored AI-powered content and automation roadmap." },
+  { n: "03", t: "Content & Automation Setup", d: "We build the systems, content engines, and workflows that do the heavy lifting." },
+  { n: "04", t: "Growth & Optimization", d: "We track results, refine, and scale what's working — every single month." },
+];
+
+const paymentMethods = [
+  { name: "Credit & Debit Cards", icon: "💳" },
+  { name: "PayPal", icon: "🅿" },
+  { name: "Apple Pay", icon: "" },
+  { name: "Google Pay", icon: "G Pay" },
+  { name: "Bank Transfer", icon: "🏦" },
 ];
 
 const aiSystems = [
