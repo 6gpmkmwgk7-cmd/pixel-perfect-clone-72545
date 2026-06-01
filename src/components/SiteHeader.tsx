@@ -27,9 +27,9 @@ export function SiteHeader() {
               <img
                 src={logo}
                 alt="Elevate Socials Agency"
-                className="h-14 w-14 rounded-xl object-contain bg-white p-1 shadow-elegant ring-1 ring-border transition-all duration-500 group-hover:scale-105 group-hover:shadow-glow animate-logo-in"
+                className="h-14 w-14 object-contain bg-white p-1 shadow-elegant ring-1 ring-border transition-all duration-500 group-hover:scale-105 group-hover:shadow-glow animate-logo-in rounded-full"
               />
-              <span className="pointer-events-none absolute -inset-0.5 rounded-xl ring-2 ring-cyan/30 animate-ping-soft" />
+              <span className="pointer-events-none absolute -inset-0.5 rounded-full ring-2 ring-cyan/30 animate-ping-soft" />
             </span>
             <span className="flex flex-col leading-none">
               <span className="font-display text-xl font-bold tracking-tight">
