@@ -808,24 +808,27 @@ function HomePage() {
         <div className="absolute inset-0 bg-mesh" />
         <div className="relative mx-auto max-w-3xl px-6 text-center">
           <h2 className="font-display text-5xl font-bold md:text-6xl">
-            Ready to <span className="text-gradient">Elevate Your Business?</span>
+            Ready To Grow Your Business With <span className="text-gradient">AI?</span>
           </h2>
-          <p className="mt-5 text-white/75">
-            Start with a free AI growth audit and discover how content, automation, and
-            better systems can help your business grow.
+          <p className="mx-auto mt-5 max-w-2xl text-white/75">
+            Stop wasting time trying to do everything yourself.
+          </p>
+          <p className="mx-auto mt-3 max-w-2xl text-white/75">
+            Let Elevate Social help you build a stronger online presence, automate repetitive
+            tasks, and attract more customers using modern AI-powered marketing systems.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
               to="/free-audit"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow"
+              className="btn-premium inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-105"
             >
-              Get Your Free AI Growth Audit <ArrowRight className="h-4 w-4" />
+              <Rocket className="h-4 w-4" /> Book Your Free AI Growth Audit
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10"
+              className="btn-premium inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10"
             >
-              Book a Free Strategy Call
+              <Sparkles className="h-4 w-4" /> Schedule A Free Consultation
             </Link>
           </div>
         </div>
