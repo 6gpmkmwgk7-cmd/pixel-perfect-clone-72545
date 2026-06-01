@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/Reveal";
+import { Counter } from "@/components/Counter";
 import { ParticleField } from "@/components/ParticleField";
 import { AIDashboardMockup } from "@/components/AIDashboardMockup";
 import { NetworkNodes } from "@/components/NetworkNodes";
@@ -14,6 +15,7 @@ import {
   Plus, Workflow, Brain, Clock, Sparkle,
   Inbox, ClipboardList, UserCog, Calendar, ShieldCheck, BadgeCheck,
   Star, Quote, TrendingUp, Utensils, Flame, Megaphone,
+  CreditCard, Lock,
 } from "lucide-react";
 
 const founderStats = [
@@ -98,10 +100,10 @@ export const Route = createFileRoute("/")({
 });
 
 const trustBadges = [
-  "Powered by OpenAI",
-  "Built with n8n Automation",
-  "Founder-Led Agency",
-  "Worldwide Service",
+  "AI Automation",
+  "Social Media Growth",
+  "Website Design",
+  "Lead Generation",
 ];
 
 const whyAi = [
@@ -127,18 +129,17 @@ const launchSystem = [
 const services = [
   {
     icon: Rocket,
-    badge: "Starting at $99",
+    badge: "$149",
     title: "Business Presence Launch",
     desc: "Get your business looking professional online in days.",
     items: ["Facebook Setup", "Instagram Setup", "LinkedIn Setup", "Professional Bio Writing", "CTA Optimization", "Keywords & Hashtags"],
   },
   {
     icon: Share2,
-    badge: "Starting at $199",
+    badge: "$299",
     title: "AI Content Engine",
     desc: "AI-powered content systems that keep your brand consistent.",
     items: ["30-Day Content Calendar", "30 Captions", "Hashtag Strategy", "Content Planning", "Canva Design Briefs"],
-    featured: true,
   },
   {
     icon: Bot,
@@ -146,7 +147,31 @@ const services = [
     title: "AI Growth System",
     desc: "Complete AI system for lead generation and business automation.",
     items: ["Lead Capture Systems", "AI Automation", "Client Onboarding Automation", "Appointment Booking Workflows", "AI Assistant Setup"],
+    featured: true,
+    popular: true,
   },
+];
+
+const resultsMetrics = [
+  { value: 100, suffix: "+", label: "Content Assets Created" },
+  { value: 10, suffix: "+", label: "Automation Workflows Built" },
+  { value: 3, suffix: "+", label: "Industries Served" },
+  { value: 24, suffix: "/7", label: "AI-Powered Systems" },
+];
+
+const growthSteps = [
+  { n: "01", t: "Free Growth Audit", d: "We review your current presence and uncover the biggest growth opportunities." },
+  { n: "02", t: "Strategy & Planning", d: "We design a tailored AI-powered content and automation roadmap." },
+  { n: "03", t: "Content & Automation Setup", d: "We build the systems, content engines, and workflows that do the heavy lifting." },
+  { n: "04", t: "Growth & Optimization", d: "We track results, refine, and scale what's working — every single month." },
+];
+
+const paymentMethods = [
+  { name: "Credit & Debit Cards", icon: "💳" },
+  { name: "PayPal", icon: "🅿" },
+  { name: "Apple Pay", icon: "" },
+  { name: "Google Pay", icon: "G Pay" },
+  { name: "Bank Transfer", icon: "🏦" },
 ];
 
 const aiSystems = [
@@ -265,15 +290,15 @@ function HomePage() {
             </Reveal>
             <Reveal delay={120}>
               <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] md:text-7xl">
-                AI-Powered Marketing & Automation for{" "}
-                <span className="text-shimmer">Small Business Growth</span>
+                AI-Powered Marketing & Automation That Helps{" "}
+                <span className="text-shimmer">Small Businesses Grow Faster</span>
               </h1>
             </Reveal>
             <Reveal delay={240}>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
-                Elevate Socials helps restaurants, contractors, plumbers, and local businesses
-                attract more customers through AI-powered content creation, social media
-                management, and automation systems.
+                We help restaurants, contractors, plumbers, landscapers, cleaning companies, and local
+                businesses generate more leads, save time, and grow through AI-powered content,
+                automation, websites, and marketing systems.
               </p>
             </Reveal>
             <Reveal delay={360}>
@@ -282,14 +307,14 @@ function HomePage() {
                   to="/free-audit"
                   className="btn-premium group inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-105"
                 >
-                  Get Your Free AI Growth Audit
+                  🚀 Book Your Free AI Growth Audit
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                 </Link>
                 <Link
-                  to="/contact"
+                  to="/case-studies"
                   className="btn-premium inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
                 >
-                  Book a Free Strategy Call
+                  📈 View Case Studies
                 </Link>
               </div>
             </Reveal>
@@ -315,6 +340,37 @@ function HomePage() {
           </Reveal>
         </div>
       </section>
+
+      {/* RESULTS METRICS */}
+      <section className="relative overflow-hidden bg-navy py-20 text-white">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
+        <div className="absolute inset-0 bg-mesh opacity-60" />
+        <div className="absolute -top-32 left-1/3 h-72 w-72 rounded-full bg-cyan/20 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider text-cyan">Proven Impact</p>
+            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
+              Results-Focused <span className="text-gradient">Growth Systems</span>
+            </h2>
+          </div>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {resultsMetrics.map((m, i) => (
+              <Reveal key={m.label} variant="up" delay={i * 100}>
+                <div className="glass relative overflow-hidden rounded-3xl border border-white/15 p-8 text-center lift-glow">
+                  <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-cyan/20 blur-2xl" />
+                  <Counter
+                    to={m.value}
+                    suffix={m.suffix}
+                    className="relative font-display text-5xl font-bold text-shimmer md:text-6xl"
+                  />
+                  <p className="relative mt-3 text-sm font-medium text-white/70">{m.label}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* WHY ELEVATE SOCIAL EXISTS */}
       <section className="relative overflow-hidden py-24">
@@ -409,13 +465,43 @@ function HomePage() {
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* HOW WE HELP YOU GROW */}
+      <section className="relative overflow-hidden py-24">
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Our Process</p>
+            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
+              How We Help You <span className="text-gradient">Grow</span>
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              A clear, proven 4-step path from audit to ongoing optimization.
+            </p>
+          </div>
+          <div className="relative mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="pointer-events-none absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-cyan/40 to-transparent lg:block" />
+            {growthSteps.map((s, i) => (
+              <Reveal key={s.n} variant="up" delay={i * 120}>
+                <div className="relative h-full rounded-3xl border border-border bg-card p-7 transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-glow">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-gold text-lg font-bold text-white shadow-glow">
+                    {s.n}
+                  </div>
+                  <h3 className="mt-5 font-display text-lg font-bold">{s.t}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{s.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES (Pricing) */}
       <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Services</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Pricing</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              Three core services to launch, grow, and automate
+              Transparent plans built to <span className="text-gradient">scale with you</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
               Start where you are. Scale into full AI-powered automation when you're ready.
@@ -427,18 +513,23 @@ function HomePage() {
                 key={s.title}
                 className={`relative flex flex-col rounded-3xl border p-8 transition hover:-translate-y-1 ${
                   s.featured
-                    ? "border-cyan bg-navy text-white shadow-glow"
+                    ? "border-cyan bg-navy text-white shadow-glow lg:scale-105"
                     : "border-border bg-card hover:border-electric/40 hover:shadow-elegant"
                 }`}
               >
+                {s.popular && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-gold px-4 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-glow">
+                    🔥 Most Popular
+                  </span>
+                )}
                 <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${s.featured ? "bg-gradient-gold" : "bg-gradient-accent"} text-white`}>
                   <s.icon className="h-6 w-6" />
                 </div>
-                <span className={`mt-5 inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold ${s.featured ? "bg-cyan/20 text-cyan" : "bg-electric/10 text-electric"}`}>
-                  {s.badge}
-                </span>
-                <h3 className="mt-4 font-display text-2xl font-bold">{s.title}</h3>
+                <h3 className="mt-5 font-display text-2xl font-bold">{s.title}</h3>
                 <p className={`mt-2 text-sm ${s.featured ? "text-white/70" : "text-muted-foreground"}`}>{s.desc}</p>
+                <div className="mt-5 flex items-baseline gap-1">
+                  <span className={`font-display text-4xl font-bold ${s.featured ? "text-white" : "text-foreground"}`}>{s.badge}</span>
+                </div>
                 <ul className="mt-6 space-y-2.5">
                   {s.items.map((i) => (
                     <li key={i} className="flex items-start gap-2 text-sm">
@@ -462,6 +553,38 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* SECURE PAYMENT METHODS */}
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-10 md:p-14">
+          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-cyan/10 blur-3xl" />
+          <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-purple/10 blur-3xl" />
+          <div className="relative mx-auto max-w-3xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-cyan/30 bg-cyan/10 px-4 py-1.5 text-xs font-semibold text-cyan">
+              <Lock className="h-3.5 w-3.5" /> Secure Checkout
+            </div>
+            <h2 className="mt-5 font-display text-4xl font-bold md:text-5xl">
+              Secure <span className="text-gradient">Payment Options</span>
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              We offer secure and flexible payment methods for clients worldwide.
+            </p>
+          </div>
+          <div className="relative mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {paymentMethods.map((p) => (
+              <div key={p.name} className="flex h-24 flex-col items-center justify-center gap-2 rounded-2xl border border-border bg-background/60 p-4 backdrop-blur transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-glow">
+                <span className="text-2xl font-bold tracking-tight text-foreground">{p.icon || <CreditCard className="h-6 w-6 text-electric" />}</span>
+                <p className="text-center text-xs font-semibold text-muted-foreground">{p.name}</p>
+              </div>
+            ))}
+          </div>
+          <p className="relative mt-10 flex items-center justify-center gap-2 text-center text-xs text-muted-foreground">
+            <ShieldCheck className="h-4 w-4 text-cyan" />
+            All payments are processed through secure and encrypted payment gateways.
+          </p>
+        </div>
+      </section>
+
 
       {/* MEET THE AI SYSTEMS */}
       <section className="relative overflow-hidden bg-navy py-24 text-white">

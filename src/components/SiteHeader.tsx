@@ -30,16 +30,16 @@ export function SiteHeader() {
           <div className="absolute -left-20 top-1/2 -translate-y-1/2 h-40 w-40 rounded-full bg-cyan/20 blur-3xl pointer-events-none" />
           <div className="absolute -right-20 top-1/2 -translate-y-1/2 h-40 w-40 rounded-full bg-purple/20 blur-3xl pointer-events-none" />
 
-          <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-3">
+          <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 md:py-5">
 
             {/* LEFT: Logo + Full Name */}
-            <Link to="/" className="group flex items-center gap-5 min-w-0">
+            <Link to="/" className="group flex items-center gap-5 md:gap-6 min-w-0">
               {/* Logo — large, full square, no crop */}
               <span className="relative shrink-0">
                 <img
                   src={logo}
                   alt="Elevate Socials Agency"
-                  className="h-14 w-14 object-contain bg-white p-1 shadow-elegant ring-1 ring-border transition-all duration-500 group-hover:scale-105 group-hover:shadow-glow animate-logo-in rounded-full"
+                  className="h-[60px] w-[60px] md:h-[68px] md:w-[68px] object-contain bg-white p-1.5 shadow-[0_0_30px_rgba(6,182,212,0.3)] ring-2 ring-cyan/30 transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] animate-logo-in rounded-full"
                 />
                 {/* animated ring */}
                 <span className="pointer-events-none absolute -inset-1 rounded-2xl ring-2 ring-cyan/20 animate-ping-soft" />
@@ -72,20 +72,20 @@ export function SiteHeader() {
               </span>
             </Link>
 
-            {/* RIGHT: Auth buttons */}
+            {/* RIGHT: Auth + Primary CTA */}
             <div className="hidden items-center gap-2 lg:flex shrink-0">
               <button
                 onClick={() => setAuthMode("login")}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/80 backdrop-blur transition hover:border-cyan/40 hover:bg-white/10 hover:text-white"
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-4 py-2.5 text-sm font-medium text-white/80 backdrop-blur transition hover:border-cyan/40 hover:bg-white/10 hover:text-white"
               >
                 <LogIn className="h-3.5 w-3.5" /> Sign In
               </button>
-              <button
-                onClick={() => setAuthMode("signup")}
-                className="btn-premium inline-flex items-center gap-1.5 rounded-full bg-gradient-gold px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition hover:opacity-95"
+              <Link
+                to="/free-audit"
+                className="btn-premium inline-flex items-center gap-1.5 rounded-full bg-gradient-gold px-5 py-2.5 text-sm font-bold text-white shadow-glow transition hover:scale-105"
               >
-                <UserPlus className="h-3.5 w-3.5" /> Sign Up Free
-              </button>
+                🚀 Book Free AI Growth Audit
+              </Link>
             </div>
 
             {/* Mobile hamburger */}
