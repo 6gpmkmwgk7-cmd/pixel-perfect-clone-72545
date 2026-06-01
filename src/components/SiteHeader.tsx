@@ -22,13 +22,22 @@ export function SiteHeader() {
     <>
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-lg">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link to="/" className="group flex items-center gap-2.5">
-            <span className="relative inline-flex">
-              <img src={logo} alt="Elevate Socials Agency" className="h-11 w-11 rounded-full object-contain bg-white p-0.5 shadow-elegant ring-1 ring-border transition-transform duration-500 group-hover:rotate-6 animate-logo-in" />
-              <span className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-cyan/40 animate-ping-soft" />
+          <Link to="/" className="group flex items-center gap-3">
+            <span className="relative inline-flex shrink-0">
+              <img
+                src={logo}
+                alt="Elevate Socials Agency"
+                className="h-14 w-14 rounded-xl object-contain bg-white p-1 shadow-elegant ring-1 ring-border transition-all duration-500 group-hover:scale-105 group-hover:shadow-glow animate-logo-in"
+              />
+              <span className="pointer-events-none absolute -inset-0.5 rounded-xl ring-2 ring-cyan/30 animate-ping-soft" />
             </span>
-            <span className="font-display text-lg font-semibold tracking-tight">
-              Elevate <span className="text-gold">Socials</span>
+            <span className="flex flex-col leading-none">
+              <span className="font-display text-xl font-bold tracking-tight">
+                Elevate <span className="text-gradient">Socials</span>
+              </span>
+              <span className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                Agency
+              </span>
             </span>
           </Link>
 
