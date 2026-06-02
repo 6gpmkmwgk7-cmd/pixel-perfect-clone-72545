@@ -61,19 +61,25 @@ export function ChatBot() {
         content: m.content,
       }));
 
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
+      const sessionId = typeof window !== "undefined"
+        ? (window.localStorage.getItem("ellie_session") ??
+           (() => { const id = crypto.randomUUID(); window.localStorage.setItem("ellie_session", id); return id; })())
+        : undefined;
+
+      const res = await fetch("https://laraib55.app.n8n.cloud/webhook/elevate-social-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: history,
-        }),
+        body: JSON.stringify({ message: text, history, sessionId }),
       });
 
-      const data = await res.json();
-      const reply = data.content?.[0]?.text ?? "Sorry, I had trouble responding. Please try again!";
+      const raw = await res.text();
+      let reply = "Sorry, I had trouble responding. Please try again!";
+      try {
+        const data = JSON.parse(raw);
+        reply = data.reply ?? data.output ?? data.message ?? data.text ?? data.response ?? reply;
+      } catch {
+        if (raw) reply = raw;
+      }
 
       setMessages((prev) => [
         ...prev,
