@@ -218,7 +218,7 @@ export function ChatBot() {
                     <Send className="h-3.5 w-3.5" />
                   </button>
                 </div>
-                <p className="mt-2 text-center text-[10px] text-white/30">Powered by Claude AI · Elevate Socials</p>
+                <p className="mt-2 text-center text-[10px] text-white/30">Elevate Social AI Assistant</p>
               </div>
             </>
           )}
