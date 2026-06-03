@@ -27,7 +27,7 @@ export function ChatBot() {
     {
       id: "welcome",
       role: "assistant",
-      content: "Hi! I'm Ellie, your AI growth assistant 👋 I can answer questions about our services, pricing, or help you get started. What's on your mind?",
+      content: "Hi! I'm Elevate Social AI. How can I help your business grow today?",
       ts: Date.now(),
     },
   ]);
@@ -56,27 +56,29 @@ export function ChatBot() {
     setLoading(true);
 
     try {
-      const history = [...messages, userMsg].map((m) => ({
-        role: m.role,
-        content: m.content,
-      }));
+      let sessionId = "";
+      if (typeof window !== "undefined") {
+        sessionId = window.localStorage.getItem("elevate_session") ?? "";
+        if (!sessionId) {
+          sessionId = "web_" + Date.now();
+          window.localStorage.setItem("elevate_session", sessionId);
+        }
+      }
 
-      const sessionId = typeof window !== "undefined"
-        ? (window.localStorage.getItem("ellie_session") ??
-           (() => { const id = crypto.randomUUID(); window.localStorage.setItem("ellie_session", id); return id; })())
-        : undefined;
-
-      const res = await fetch("https://laraib55.app.n8n.cloud/webhook/elevate-social-chat", {
+      const res = await fetch("https://elevatesocial.app.n8n.cloud/webhook/elevate-social-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, history, sessionId }),
+        body: JSON.stringify({ message: text, sessionId }),
       });
 
       const raw = await res.text();
-      let reply = "Sorry, I had trouble responding. Please try again!";
+      let reply = "Sorry, something went wrong. Please try again or book a free AI audit.";
       try {
         const data = JSON.parse(raw);
         reply = data.reply ?? data.output ?? data.message ?? data.text ?? data.response ?? reply;
+        if (data.sessionId && typeof window !== "undefined") {
+          window.localStorage.setItem("elevate_session", data.sessionId);
+        }
       } catch {
         if (raw) reply = raw;
       }
@@ -88,7 +90,7 @@ export function ChatBot() {
     } catch {
       setMessages((prev) => [
         ...prev,
-        { id: (Date.now() + 1).toString(), role: "assistant", content: "Oops, something went wrong. Please try again in a moment!", ts: Date.now() },
+        { id: (Date.now() + 1).toString(), role: "assistant", content: "Sorry, something went wrong. Please try again or book a free AI audit.", ts: Date.now() },
       ]);
     } finally {
       setLoading(false);
@@ -105,16 +107,17 @@ export function ChatBot() {
       {!open && (
         <button
           onClick={() => { setOpen(true); setMinimized(false); }}
-          className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-gold shadow-glow transition hover:scale-110 active:scale-95"
-          aria-label="Open chat"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-gradient-to-r from-[#06B6D4] to-[#8B5CF6] px-5 py-3.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(139,92,246,0.5)] transition hover:scale-105 active:scale-95"
+          aria-label="Open AI Chat"
         >
           <div className="relative">
-            <MessageCircle className="h-7 w-7 text-white" />
-            <span className="absolute -right-1 -top-1 flex h-3 w-3">
+            <MessageCircle className="h-5 w-5 text-white" />
+            <span className="absolute -right-1 -top-1 flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan opacity-75" />
-              <span className="relative inline-flex h-3 w-3 rounded-full bg-cyan" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan" />
             </span>
           </div>
+          <span>AI Chat</span>
         </button>
       )}
 
@@ -134,8 +137,8 @@ export function ChatBot() {
                 <span className="absolute -right-0.5 -bottom-0.5 h-3 w-3 rounded-full border-2 border-navy bg-green-400" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-white">Ellie</p>
-                <p className="text-[10px] text-cyan">AI Growth Assistant · Online</p>
+                <p className="text-sm font-semibold text-white">Elevate Social AI</p>
+                <p className="text-[10px] text-cyan">AI Assistant · Online</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -215,7 +218,7 @@ export function ChatBot() {
                     <Send className="h-3.5 w-3.5" />
                   </button>
                 </div>
-                <p className="mt-2 text-center text-[10px] text-white/30">Powered by Claude AI · Elevate Socials</p>
+                <p className="mt-2 text-center text-[10px] text-white/30">Elevate Social AI Assistant</p>
               </div>
             </>
           )}
