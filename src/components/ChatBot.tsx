@@ -27,7 +27,7 @@ export function ChatBot() {
     {
       id: "welcome",
       role: "assistant",
-      content: "Hi! I'm Ellie, your AI growth assistant 👋 I can answer questions about our services, pricing, or help you get started. What's on your mind?",
+      content: "Hi! I'm Elevate Social AI. How can I help your business grow today?",
       ts: Date.now(),
     },
   ]);
@@ -56,27 +56,29 @@ export function ChatBot() {
     setLoading(true);
 
     try {
-      const history = [...messages, userMsg].map((m) => ({
-        role: m.role,
-        content: m.content,
-      }));
+      let sessionId = "";
+      if (typeof window !== "undefined") {
+        sessionId = window.localStorage.getItem("elevate_session") ?? "";
+        if (!sessionId) {
+          sessionId = "web_" + Date.now();
+          window.localStorage.setItem("elevate_session", sessionId);
+        }
+      }
 
-      const sessionId = typeof window !== "undefined"
-        ? (window.localStorage.getItem("ellie_session") ??
-           (() => { const id = crypto.randomUUID(); window.localStorage.setItem("ellie_session", id); return id; })())
-        : undefined;
-
-      const res = await fetch("https://laraib55.app.n8n.cloud/webhook/elevate-social-chat", {
+      const res = await fetch("https://elevatesocial.app.n8n.cloud/webhook/elevate-social-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, history, sessionId }),
+        body: JSON.stringify({ message: text, sessionId }),
       });
 
       const raw = await res.text();
-      let reply = "Sorry, I had trouble responding. Please try again!";
+      let reply = "Sorry, something went wrong. Please try again or book a free AI audit.";
       try {
         const data = JSON.parse(raw);
         reply = data.reply ?? data.output ?? data.message ?? data.text ?? data.response ?? reply;
+        if (data.sessionId && typeof window !== "undefined") {
+          window.localStorage.setItem("elevate_session", data.sessionId);
+        }
       } catch {
         if (raw) reply = raw;
       }
@@ -88,7 +90,7 @@ export function ChatBot() {
     } catch {
       setMessages((prev) => [
         ...prev,
-        { id: (Date.now() + 1).toString(), role: "assistant", content: "Oops, something went wrong. Please try again in a moment!", ts: Date.now() },
+        { id: (Date.now() + 1).toString(), role: "assistant", content: "Sorry, something went wrong. Please try again or book a free AI audit.", ts: Date.now() },
       ]);
     } finally {
       setLoading(false);
