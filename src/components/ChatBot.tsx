@@ -137,8 +137,8 @@ export function ChatBot() {
                 <span className="absolute -right-0.5 -bottom-0.5 h-3 w-3 rounded-full border-2 border-navy bg-green-400" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-white">Ellie</p>
-                <p className="text-[10px] text-cyan">AI Growth Assistant · Online</p>
+                <p className="text-sm font-semibold text-white">Elevate Social AI</p>
+                <p className="text-[10px] text-cyan">AI Assistant · Online</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
