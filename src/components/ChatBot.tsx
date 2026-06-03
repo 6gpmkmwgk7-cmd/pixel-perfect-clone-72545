@@ -107,16 +107,17 @@ export function ChatBot() {
       {!open && (
         <button
           onClick={() => { setOpen(true); setMinimized(false); }}
-          className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-gold shadow-glow transition hover:scale-110 active:scale-95"
-          aria-label="Open chat"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-gradient-to-r from-[#06B6D4] to-[#8B5CF6] px-5 py-3.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(139,92,246,0.5)] transition hover:scale-105 active:scale-95"
+          aria-label="Open AI Chat"
         >
           <div className="relative">
-            <MessageCircle className="h-7 w-7 text-white" />
-            <span className="absolute -right-1 -top-1 flex h-3 w-3">
+            <MessageCircle className="h-5 w-5 text-white" />
+            <span className="absolute -right-1 -top-1 flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan opacity-75" />
-              <span className="relative inline-flex h-3 w-3 rounded-full bg-cyan" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan" />
             </span>
           </div>
+          <span>AI Chat</span>
         </button>
       )}
 
