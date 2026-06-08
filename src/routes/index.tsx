@@ -575,8 +575,23 @@ function HomePage() {
               </div>
             ))}
           </div>
+          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-border bg-card/60 p-5 text-center text-sm text-muted-foreground backdrop-blur">
+            Custom AI Systems are quoted after a Free AI Growth Audit. Final pricing depends on
+            your business type, scope, tools required, and timeline — we recommend starting with
+            a Free AI Growth Audit.
+          </div>
         </div>
       </section>
+
+      {/* TRUST & SAFETY NOTE */}
+      <section className="mx-auto max-w-5xl px-6 pt-4">
+        <div className="rounded-2xl border border-cyan/30 bg-cyan/5 p-6 text-center text-sm text-muted-foreground">
+          <ShieldCheck className="mx-auto mb-2 h-5 w-5 text-cyan" />
+          We do not promise guaranteed sales, rankings, followers, or revenue. Instead, we build
+          practical AI-powered systems designed to improve consistency, speed, visibility, and follow-up.
+        </div>
+      </section>
+
 
       {/* SECURE PAYMENT METHODS */}
       <section className="mx-auto max-w-7xl px-6 py-24">
