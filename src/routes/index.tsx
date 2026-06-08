@@ -470,10 +470,10 @@ function HomePage() {
                 <span className="font-display text-5xl font-bold">$149</span>
               </div>
               <Link
-                to="/contact"
+                to="/free-audit"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:opacity-95"
               >
-                Launch My Business <ArrowRight className="h-4 w-4" />
+                Start with an AI Growth Audit <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
