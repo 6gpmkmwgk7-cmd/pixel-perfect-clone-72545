@@ -67,22 +67,39 @@ const caseStudies = [
   },
 ];
 
-const testimonials = [
+const useCases = [
   {
-    quote: "Elevate Social helped us improve our online presence and create a more professional brand image. Their content strategy gave us a clear direction and helped us engage with customers more effectively.",
-    name: "Sarah M.",
-    role: "Restaurant Owner",
+    icon: UtensilsCrossed,
+    industry: "Restaurant",
+    items: ["Content calendar & reels ideas", "Menu promotion campaigns", "Lead capture for catering"],
   },
   {
-    quote: "The automation systems and marketing support provided by Elevate Social saved us hours every week. Everything became more organized and efficient.",
-    name: "Michael R.",
-    role: "Local Service Business Owner",
+    icon: Wrench,
+    industry: "Plumbing Business",
+    items: ["Google Business support", "Service page copy", "Booking workflow setup"],
   },
   {
-    quote: "Professional, responsive, and innovative. Elevate Social helped us understand how AI can support business growth without overwhelming us with complicated technology.",
-    name: "David K.",
-    role: "Small Business Owner",
+    icon: Brush,
+    industry: "Cleaning Company",
+    items: ["Quote intake form", "Follow-up automation", "Social content planning"],
   },
+  {
+    icon: Sparkle,
+    industry: "Salon",
+    items: ["Offer posts & promos", "Booking reminder system", "Client intake automation"],
+  },
+];
+
+const workflowExamples = [
+  "Website lead capture workflow",
+  "Google Sheets CRM setup",
+  "Telegram/email lead alerts",
+  "AI chatbot setup",
+  "Client intake automation",
+  "Booking workflow",
+  "Follow-up reminder system",
+  "n8n workflow blueprint",
+  "Human approval system",
 ];
 
 export const Route = createFileRoute("/")({
@@ -129,21 +146,28 @@ const launchSystem = [
 const services = [
   {
     icon: Rocket,
-    badge: "$149",
+    badge: "From $149",
     title: "Business Presence Launch",
     desc: "Get your business looking professional online in days.",
     items: ["Facebook Setup", "Instagram Setup", "LinkedIn Setup", "Professional Bio Writing", "CTA Optimization", "Keywords & Hashtags"],
   },
   {
     icon: Share2,
-    badge: "$299",
+    badge: "From $299/mo",
     title: "AI Content Engine",
     desc: "AI-powered content systems that keep your brand consistent.",
     items: ["30-Day Content Calendar", "30 Captions", "Hashtag Strategy", "Content Planning", "Canva Design Briefs"],
   },
   {
+    icon: Workflow,
+    badge: "From $299",
+    title: "AI Workflow Automation Setup",
+    desc: "Practical AI workflows that capture leads, organize info, and reduce manual work.",
+    items: ["Lead Capture Workflow", "Google Sheets CRM", "Telegram/Email Alerts", "Client Intake Forms", "Booking & Follow-up"],
+  },
+  {
     icon: Bot,
-    badge: "Starting at $499/month",
+    badge: "From $499/mo",
     title: "AI Growth System",
     desc: "Complete AI system for lead generation and business automation.",
     items: ["Lead Capture Systems", "AI Automation", "Client Onboarding Automation", "Appointment Booking Workflows", "AI Assistant Setup"],
@@ -160,10 +184,12 @@ const resultsMetrics = [
 ];
 
 const growthSteps = [
-  { n: "01", t: "Free Growth Audit", d: "We review your current presence and uncover the biggest growth opportunities." },
-  { n: "02", t: "Strategy & Planning", d: "We design a tailored AI-powered content and automation roadmap." },
-  { n: "03", t: "Content & Automation Setup", d: "We build the systems, content engines, and workflows that do the heavy lifting." },
-  { n: "04", t: "Growth & Optimization", d: "We track results, refine, and scale what's working — every single month." },
+  { n: "01", t: "Free AI Growth Audit", d: "We review your current presence and identify the biggest growth opportunities." },
+  { n: "02", t: "Opportunity Mapping", d: "We pinpoint the best content, website, or automation opportunity for your business." },
+  { n: "03", t: "Simple Action Plan", d: "We build a clear, simple action plan tailored to your business and timeline." },
+  { n: "04", t: "AI-Assisted Production", d: "Our AI-assisted production system prepares drafts, workflows, and assets." },
+  { n: "05", t: "Human Review", d: "Every deliverable is reviewed by a human before it's sent to you." },
+  { n: "06", t: "Delivery & Next Steps", d: "You receive ready-to-use assets, systems, or next-step recommendations." },
 ];
 
 const paymentMethods = [
@@ -231,11 +257,11 @@ const auditPoints = [
 ];
 
 const faqs = [
-  { q: "What services do you offer?", a: "AI-powered content creation, social media setup and management, professional business profiles, and end-to-end business automation systems built for small businesses." },
-  { q: "How does AI improve marketing?", a: "AI lets us produce consistent content faster, automate repetitive workflows, respond to leads quickly, and continuously refine what works — at a fraction of the cost of a traditional agency." },
-  { q: "Do you work worldwide?", a: "Yes. We serve small businesses globally and tailor each system to the local market and language." },
-  { q: "Can you guarantee results?", a: "We don't promise unrealistic results. We focus on building strong systems, consistent content, and automation that gives your business the best possible foundation for growth." },
-  { q: "How do we get started?", a: "Book a free AI growth audit. We'll review your current presence, identify opportunities, and show you exactly how AI-powered systems can help your business." },
+  { q: "What services do you offer?", a: "AI Content Engine, Website & Business Presence Launch, AI Workflow Automation Setup, Design & Canva production support, and a Free AI Growth Audit — built for small and local businesses." },
+  { q: "How does AI improve marketing?", a: "AI lets us produce consistent content faster, automate repetitive workflows, respond to leads quickly, and continuously refine what works — at a fraction of the cost of a traditional agency. Every final deliverable is reviewed by a human." },
+  { q: "Do you work worldwide?", a: "Yes. We work with small businesses across Canada and internationally, and tailor each system to the local market and language." },
+  { q: "Can you guarantee results?", a: "No. We do not promise guaranteed sales, rankings, followers, or revenue. We focus on building practical AI-powered systems designed to improve consistency, speed, visibility, and follow-up." },
+  { q: "How do we get started?", a: "Book a Free AI Growth Audit. We'll review your current presence, identify the best content, website, or automation opportunity, and show you a simple action plan." },
 ];
 
 function HomePage() {
@@ -348,10 +374,11 @@ function HomePage() {
         <div className="absolute -top-32 left-1/3 h-72 w-72 rounded-full bg-cyan/20 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-cyan">Proven Impact</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-cyan">Capabilities Snapshot</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              Results-Focused <span className="text-gradient">Growth Systems</span>
+              What Our <span className="text-gradient">AI Systems Can Do</span>
             </h2>
+            <p className="mt-4 text-sm text-white/60">Illustrative metrics from our delivery system — not guaranteed client results.</p>
           </div>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {resultsMetrics.map((m, i) => (
@@ -440,14 +467,14 @@ function HomePage() {
                 presence and AI-powered growth recommendations.
               </p>
               <div className="mt-6 flex items-baseline gap-2">
-                <span className="text-xs uppercase tracking-wider text-cyan">Starting at</span>
-                <span className="font-display text-5xl font-bold">$199</span>
+                <span className="text-xs uppercase tracking-wider text-cyan">Starting from</span>
+                <span className="font-display text-5xl font-bold">$149</span>
               </div>
               <Link
-                to="/contact"
+                to="/free-audit"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:opacity-95"
               >
-                Launch My Business <ArrowRight className="h-4 w-4" />
+                Start with an AI Growth Audit <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
@@ -470,15 +497,16 @@ function HomePage() {
         <div className="absolute inset-0 grid-pattern opacity-20" />
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Our Process</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">How It Works</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
               How We Help You <span className="text-gradient">Grow</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              A clear, proven 4-step path from audit to ongoing optimization.
+              A clear 6-step path from free audit to ready-to-use systems — with human review at every delivery.
             </p>
           </div>
-          <div className="relative mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="relative mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
             <div className="pointer-events-none absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-cyan/40 to-transparent lg:block" />
             {growthSteps.map((s, i) => (
               <Reveal key={s.n} variant="up" delay={i * 120}>
@@ -507,7 +535,7 @@ function HomePage() {
               Start where you are. Scale into full AI-powered automation when you're ready.
             </p>
           </div>
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {services.map((s) => (
               <div
                 key={s.title}
@@ -551,8 +579,23 @@ function HomePage() {
               </div>
             ))}
           </div>
+          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-border bg-card/60 p-5 text-center text-sm text-muted-foreground backdrop-blur">
+            Custom AI Systems are quoted after a Free AI Growth Audit. Final pricing depends on
+            your business type, scope, tools required, and timeline — we recommend starting with
+            a Free AI Growth Audit.
+          </div>
         </div>
       </section>
+
+      {/* TRUST & SAFETY NOTE */}
+      <section className="mx-auto max-w-5xl px-6 pt-4">
+        <div className="rounded-2xl border border-cyan/30 bg-cyan/5 p-6 text-center text-sm text-muted-foreground">
+          <ShieldCheck className="mx-auto mb-2 h-5 w-5 text-cyan" />
+          We do not promise guaranteed sales, rankings, followers, or revenue. Instead, we build
+          practical AI-powered systems designed to improve consistency, speed, visibility, and follow-up.
+        </div>
+      </section>
+
 
       {/* SECURE PAYMENT METHODS */}
       <section className="mx-auto max-w-7xl px-6 py-24">
@@ -638,6 +681,109 @@ function HomePage() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TWO-AGENT AI SYSTEM */}
+      <section className="relative overflow-hidden py-24">
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute -top-32 right-0 h-80 w-80 rounded-full bg-cyan/10 blur-3xl" />
+        <div className="absolute -bottom-32 left-0 h-80 w-80 rounded-full bg-purple/10 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-electric/30 bg-electric/10 px-4 py-1.5 text-xs font-semibold text-electric">
+              <Cpu className="h-3.5 w-3.5" /> Inside Our Agency
+            </div>
+            <h2 className="mt-5 font-display text-4xl font-bold md:text-5xl">
+              Powered by a <span className="text-gradient">Two-Agent AI System</span>
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Our agency system is built around two AI agents designed to support both customer
+              communication and service delivery.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 lg:grid-cols-2">
+            <Reveal variant="up">
+              <div className="group h-full rounded-3xl border border-border bg-card p-8 transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-glow">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-accent text-white transition group-hover:scale-110 group-hover:rotate-3">
+                  <Bot className="h-6 w-6" />
+                </div>
+                <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-cyan">Frontend AI Agent</p>
+                <h3 className="mt-1 font-display text-2xl font-bold">Customer Communication</h3>
+                <p className="mt-3 text-muted-foreground">
+                  Handles website visitors, answers service questions, explains pricing starting
+                  points, qualifies leads, books calls, collects client details, and sends lead alerts.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal variant="up" delay={120}>
+              <div className="group h-full rounded-3xl border border-border bg-card p-8 transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-glow">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-gold text-white transition group-hover:scale-110 group-hover:rotate-3">
+                  <Brain className="h-6 w-6" />
+                </div>
+                <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-cyan">Production AI Agent</p>
+                <h3 className="mt-1 font-display text-2xl font-bold">Service Delivery</h3>
+                <p className="mt-3 text-muted-foreground">
+                  Helps prepare content calendars, captions, design briefs, Canva layout plans,
+                  website copy, automation blueprints, proposals, audit reports, and client
+                  delivery drafts.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-cyan/30 bg-cyan/5 p-5 text-center text-sm text-muted-foreground">
+            <ShieldCheck className="mx-auto mb-2 h-5 w-5 text-cyan" />
+            Every final client deliverable is reviewed by a human before delivery.
+          </div>
+        </div>
+      </section>
+
+      {/* AI WORKFLOW AUTOMATION SETUP */}
+      <section className="bg-secondary/50 py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+            <Reveal>
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-cyan/30 bg-cyan/10 px-4 py-1.5 text-xs font-semibold text-cyan">
+                  <Workflow className="h-3.5 w-3.5" /> Featured Service
+                </div>
+                <h2 className="mt-5 font-display text-4xl font-bold md:text-5xl">
+                  AI Workflow <span className="text-gradient">Automation Setup</span>
+                </h2>
+                <p className="mt-5 text-muted-foreground">
+                  We design AI-powered workflows that help small businesses capture leads,
+                  organize customer information, send instant alerts, prepare follow-up drafts,
+                  manage intake forms, and reduce repetitive manual work.
+                </p>
+                <p className="mt-4 text-muted-foreground">
+                  Instead of only giving advice, we help build simple AI-powered systems that
+                  save time — such as lead capture, customer follow-up, internal notifications,
+                  content planning, and client onboarding workflows.
+                </p>
+                <Link
+                  to="/free-audit"
+                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-105"
+                >
+                  Build My AI Workflow <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal variant="zoom" delay={120}>
+              <div className="rounded-3xl border border-border bg-card p-6 shadow-elegant md:p-8">
+                <p className="text-xs font-semibold uppercase tracking-wider text-electric">Workflow Examples</p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {workflowExamples.map((w) => (
+                    <div key={w} className="flex items-start gap-2 rounded-xl border border-border bg-background/60 p-3 text-sm">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan" />
+                      <span>{w}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -869,49 +1015,49 @@ function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* USE CASES — How We Help Local Businesses */}
       <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Testimonials</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Example Use Cases</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              What <span className="text-gradient">Businesses Say</span>
+              How We Help <span className="text-gradient">Local Businesses</span>
             </h2>
+            <p className="mt-5 text-muted-foreground">
+              Practical examples of the systems we build for businesses like yours.
+            </p>
           </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.name} variant="up" delay={i * 100}>
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {useCases.map((u, i) => (
+              <Reveal key={u.industry} variant="up" delay={i * 90}>
                 <div className="group relative h-full rounded-3xl border border-border bg-card p-7 transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-elegant">
-                  <Quote className="absolute right-6 top-6 h-10 w-10 text-cyan/20" />
-                  <div className="flex gap-1 text-gold">
-                    {Array.from({ length: 5 }).map((_, k) => (
-                      <Star key={k} className="h-4 w-4 fill-current" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-accent text-white transition group-hover:scale-110 group-hover:rotate-3">
+                    <u.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-5 font-display text-lg font-bold">{u.industry}</h3>
+                  <ul className="mt-4 space-y-2">
+                    {u.items.map((it) => (
+                      <li key={it} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan" />
+                        <span>{it}</span>
+                      </li>
                     ))}
-                  </div>
-                  <p className="mt-5 text-sm leading-relaxed text-foreground">"{t.quote}"</p>
-                  <div className="mt-6 flex items-center gap-3 border-t border-border pt-5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-accent text-sm font-bold text-white">
-                      {t.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-display text-sm font-semibold">{t.name}</p>
-                      <p className="text-xs text-muted-foreground">{t.role}</p>
-                    </div>
-                  </div>
+                  </ul>
                 </div>
               </Reveal>
             ))}
           </div>
           <div className="mt-12 text-center">
             <Link
-              to="/case-studies"
+              to="/free-audit"
               className="inline-flex items-center gap-2 rounded-full border border-electric/40 bg-electric/10 px-6 py-3 text-sm font-semibold text-electric transition hover:bg-electric/20"
             >
-              <TrendingUp className="h-4 w-4" /> See How We Help Businesses Grow
+              <TrendingUp className="h-4 w-4" /> Get My Business System Reviewed
             </Link>
           </div>
         </div>
       </section>
+
 
 
       {/* FAQ */}
