@@ -27,7 +27,7 @@ export function ChatBot() {
     {
       id: "welcome",
       role: "assistant",
-      content: "Hi! I'm Elevate Social AI. How can I help your business grow today?",
+      content: "Hi! I'm Elevate Social AI. Ask about content, websites, automation, pricing, design, or booking.",
       ts: Date.now(),
     },
   ]);
@@ -60,15 +60,15 @@ export function ChatBot() {
       if (typeof window !== "undefined") {
         sessionId = window.localStorage.getItem("elevate_session") ?? "";
         if (!sessionId) {
-          sessionId = "web_" + Date.now();
+          sessionId = "web_" + Date.now() + "_" + Math.random().toString(36).slice(2, 10);
           window.localStorage.setItem("elevate_session", sessionId);
         }
       }
 
-      const res = await fetch("https://elevatesocial.app.n8n.cloud/webhook/elevate-social-chat", {
+      const res = await fetch("https://elevatedsocial111.app.n8n.cloud/webhook/elevate-social-superagent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, sessionId }),
+        body: JSON.stringify({ message: text, sessionId, channel: "lovable_website" }),
       });
 
       const raw = await res.text();
