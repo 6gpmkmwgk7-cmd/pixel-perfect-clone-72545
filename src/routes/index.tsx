@@ -464,8 +464,8 @@ function HomePage() {
                 presence and AI-powered growth recommendations.
               </p>
               <div className="mt-6 flex items-baseline gap-2">
-                <span className="text-xs uppercase tracking-wider text-cyan">Starting at</span>
-                <span className="font-display text-5xl font-bold">$199</span>
+                <span className="text-xs uppercase tracking-wider text-cyan">Starting from</span>
+                <span className="font-display text-5xl font-bold">$149</span>
               </div>
               <Link
                 to="/contact"
