@@ -184,10 +184,12 @@ const resultsMetrics = [
 ];
 
 const growthSteps = [
-  { n: "01", t: "Free Growth Audit", d: "We review your current presence and uncover the biggest growth opportunities." },
-  { n: "02", t: "Strategy & Planning", d: "We design a tailored AI-powered content and automation roadmap." },
-  { n: "03", t: "Content & Automation Setup", d: "We build the systems, content engines, and workflows that do the heavy lifting." },
-  { n: "04", t: "Growth & Optimization", d: "We track results, refine, and scale what's working — every single month." },
+  { n: "01", t: "Free AI Growth Audit", d: "We review your current presence and identify the biggest growth opportunities." },
+  { n: "02", t: "Opportunity Mapping", d: "We pinpoint the best content, website, or automation opportunity for your business." },
+  { n: "03", t: "Simple Action Plan", d: "We build a clear, simple action plan tailored to your business and timeline." },
+  { n: "04", t: "AI-Assisted Production", d: "Our AI-assisted production system prepares drafts, workflows, and assets." },
+  { n: "05", t: "Human Review", d: "Every deliverable is reviewed by a human before it's sent to you." },
+  { n: "06", t: "Delivery & Next Steps", d: "You receive ready-to-use assets, systems, or next-step recommendations." },
 ];
 
 const paymentMethods = [
