@@ -257,11 +257,11 @@ const auditPoints = [
 ];
 
 const faqs = [
-  { q: "What services do you offer?", a: "AI-powered content creation, social media setup and management, professional business profiles, and end-to-end business automation systems built for small businesses." },
-  { q: "How does AI improve marketing?", a: "AI lets us produce consistent content faster, automate repetitive workflows, respond to leads quickly, and continuously refine what works — at a fraction of the cost of a traditional agency." },
-  { q: "Do you work worldwide?", a: "Yes. We serve small businesses globally and tailor each system to the local market and language." },
-  { q: "Can you guarantee results?", a: "We don't promise unrealistic results. We focus on building strong systems, consistent content, and automation that gives your business the best possible foundation for growth." },
-  { q: "How do we get started?", a: "Book a free AI growth audit. We'll review your current presence, identify opportunities, and show you exactly how AI-powered systems can help your business." },
+  { q: "What services do you offer?", a: "AI Content Engine, Website & Business Presence Launch, AI Workflow Automation Setup, Design & Canva production support, and a Free AI Growth Audit — built for small and local businesses." },
+  { q: "How does AI improve marketing?", a: "AI lets us produce consistent content faster, automate repetitive workflows, respond to leads quickly, and continuously refine what works — at a fraction of the cost of a traditional agency. Every final deliverable is reviewed by a human." },
+  { q: "Do you work worldwide?", a: "Yes. We work with small businesses across Canada and internationally, and tailor each system to the local market and language." },
+  { q: "Can you guarantee results?", a: "No. We do not promise guaranteed sales, rankings, followers, or revenue. We focus on building practical AI-powered systems designed to improve consistency, speed, visibility, and follow-up." },
+  { q: "How do we get started?", a: "Book a Free AI Growth Audit. We'll review your current presence, identify the best content, website, or automation opportunity, and show you a simple action plan." },
 ];
 
 function HomePage() {
