@@ -374,10 +374,11 @@ function HomePage() {
         <div className="absolute -top-32 left-1/3 h-72 w-72 rounded-full bg-cyan/20 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-cyan">Proven Impact</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-cyan">Capabilities Snapshot</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              Results-Focused <span className="text-gradient">Growth Systems</span>
+              What Our <span className="text-gradient">AI Systems Can Do</span>
             </h2>
+            <p className="mt-4 text-sm text-white/60">Illustrative metrics from our delivery system — not guaranteed client results.</p>
           </div>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {resultsMetrics.map((m, i) => (
