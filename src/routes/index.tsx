@@ -496,15 +496,16 @@ function HomePage() {
         <div className="absolute inset-0 grid-pattern opacity-20" />
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Our Process</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">How It Works</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
               How We Help You <span className="text-gradient">Grow</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              A clear, proven 4-step path from audit to ongoing optimization.
+              A clear 6-step path from free audit to ready-to-use systems — with human review at every delivery.
             </p>
           </div>
-          <div className="relative mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="relative mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
             <div className="pointer-events-none absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-cyan/40 to-transparent lg:block" />
             {growthSteps.map((s, i) => (
               <Reveal key={s.n} variant="up" delay={i * 120}>
