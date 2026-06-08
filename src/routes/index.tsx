@@ -893,49 +893,49 @@ function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* USE CASES — How We Help Local Businesses */}
       <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Testimonials</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Example Use Cases</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              What <span className="text-gradient">Businesses Say</span>
+              How We Help <span className="text-gradient">Local Businesses</span>
             </h2>
+            <p className="mt-5 text-muted-foreground">
+              Practical examples of the systems we build for businesses like yours.
+            </p>
           </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.name} variant="up" delay={i * 100}>
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {useCases.map((u, i) => (
+              <Reveal key={u.industry} variant="up" delay={i * 90}>
                 <div className="group relative h-full rounded-3xl border border-border bg-card p-7 transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-elegant">
-                  <Quote className="absolute right-6 top-6 h-10 w-10 text-cyan/20" />
-                  <div className="flex gap-1 text-gold">
-                    {Array.from({ length: 5 }).map((_, k) => (
-                      <Star key={k} className="h-4 w-4 fill-current" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-accent text-white transition group-hover:scale-110 group-hover:rotate-3">
+                    <u.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-5 font-display text-lg font-bold">{u.industry}</h3>
+                  <ul className="mt-4 space-y-2">
+                    {u.items.map((it) => (
+                      <li key={it} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan" />
+                        <span>{it}</span>
+                      </li>
                     ))}
-                  </div>
-                  <p className="mt-5 text-sm leading-relaxed text-foreground">"{t.quote}"</p>
-                  <div className="mt-6 flex items-center gap-3 border-t border-border pt-5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-accent text-sm font-bold text-white">
-                      {t.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-display text-sm font-semibold">{t.name}</p>
-                      <p className="text-xs text-muted-foreground">{t.role}</p>
-                    </div>
-                  </div>
+                  </ul>
                 </div>
               </Reveal>
             ))}
           </div>
           <div className="mt-12 text-center">
             <Link
-              to="/case-studies"
+              to="/free-audit"
               className="inline-flex items-center gap-2 rounded-full border border-electric/40 bg-electric/10 px-6 py-3 text-sm font-semibold text-electric transition hover:bg-electric/20"
             >
-              <TrendingUp className="h-4 w-4" /> See How We Help Businesses Grow
+              <TrendingUp className="h-4 w-4" /> Get My Business System Reviewed
             </Link>
           </div>
         </div>
       </section>
+
 
 
       {/* FAQ */}
