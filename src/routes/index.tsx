@@ -684,6 +684,109 @@ function HomePage() {
         </div>
       </section>
 
+      {/* TWO-AGENT AI SYSTEM */}
+      <section className="relative overflow-hidden py-24">
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute -top-32 right-0 h-80 w-80 rounded-full bg-cyan/10 blur-3xl" />
+        <div className="absolute -bottom-32 left-0 h-80 w-80 rounded-full bg-purple/10 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-electric/30 bg-electric/10 px-4 py-1.5 text-xs font-semibold text-electric">
+              <Cpu className="h-3.5 w-3.5" /> Inside Our Agency
+            </div>
+            <h2 className="mt-5 font-display text-4xl font-bold md:text-5xl">
+              Powered by a <span className="text-gradient">Two-Agent AI System</span>
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Our agency system is built around two AI agents designed to support both customer
+              communication and service delivery.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 lg:grid-cols-2">
+            <Reveal variant="up">
+              <div className="group h-full rounded-3xl border border-border bg-card p-8 transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-glow">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-accent text-white transition group-hover:scale-110 group-hover:rotate-3">
+                  <Bot className="h-6 w-6" />
+                </div>
+                <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-cyan">Frontend AI Agent</p>
+                <h3 className="mt-1 font-display text-2xl font-bold">Customer Communication</h3>
+                <p className="mt-3 text-muted-foreground">
+                  Handles website visitors, answers service questions, explains pricing starting
+                  points, qualifies leads, books calls, collects client details, and sends lead alerts.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal variant="up" delay={120}>
+              <div className="group h-full rounded-3xl border border-border bg-card p-8 transition hover:-translate-y-1 hover:border-cyan/40 hover:shadow-glow">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-gold text-white transition group-hover:scale-110 group-hover:rotate-3">
+                  <Brain className="h-6 w-6" />
+                </div>
+                <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-cyan">Production AI Agent</p>
+                <h3 className="mt-1 font-display text-2xl font-bold">Service Delivery</h3>
+                <p className="mt-3 text-muted-foreground">
+                  Helps prepare content calendars, captions, design briefs, Canva layout plans,
+                  website copy, automation blueprints, proposals, audit reports, and client
+                  delivery drafts.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-cyan/30 bg-cyan/5 p-5 text-center text-sm text-muted-foreground">
+            <ShieldCheck className="mx-auto mb-2 h-5 w-5 text-cyan" />
+            Every final client deliverable is reviewed by a human before delivery.
+          </div>
+        </div>
+      </section>
+
+      {/* AI WORKFLOW AUTOMATION SETUP */}
+      <section className="bg-secondary/50 py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+            <Reveal>
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-cyan/30 bg-cyan/10 px-4 py-1.5 text-xs font-semibold text-cyan">
+                  <Workflow className="h-3.5 w-3.5" /> Featured Service
+                </div>
+                <h2 className="mt-5 font-display text-4xl font-bold md:text-5xl">
+                  AI Workflow <span className="text-gradient">Automation Setup</span>
+                </h2>
+                <p className="mt-5 text-muted-foreground">
+                  We design AI-powered workflows that help small businesses capture leads,
+                  organize customer information, send instant alerts, prepare follow-up drafts,
+                  manage intake forms, and reduce repetitive manual work.
+                </p>
+                <p className="mt-4 text-muted-foreground">
+                  Instead of only giving advice, we help build simple AI-powered systems that
+                  save time — such as lead capture, customer follow-up, internal notifications,
+                  content planning, and client onboarding workflows.
+                </p>
+                <Link
+                  to="/free-audit"
+                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-105"
+                >
+                  Build My AI Workflow <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal variant="zoom" delay={120}>
+              <div className="rounded-3xl border border-border bg-card p-6 shadow-elegant md:p-8">
+                <p className="text-xs font-semibold uppercase tracking-wider text-electric">Workflow Examples</p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {workflowExamples.map((w) => (
+                    <div key={w} className="flex items-start gap-2 rounded-xl border border-border bg-background/60 p-3 text-sm">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan" />
+                      <span>{w}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* INDUSTRIES */}
       <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-6">
