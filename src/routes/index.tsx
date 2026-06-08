@@ -67,22 +67,39 @@ const caseStudies = [
   },
 ];
 
-const testimonials = [
+const useCases = [
   {
-    quote: "Elevate Social helped us improve our online presence and create a more professional brand image. Their content strategy gave us a clear direction and helped us engage with customers more effectively.",
-    name: "Sarah M.",
-    role: "Restaurant Owner",
+    icon: UtensilsCrossed,
+    industry: "Restaurant",
+    items: ["Content calendar & reels ideas", "Menu promotion campaigns", "Lead capture for catering"],
   },
   {
-    quote: "The automation systems and marketing support provided by Elevate Social saved us hours every week. Everything became more organized and efficient.",
-    name: "Michael R.",
-    role: "Local Service Business Owner",
+    icon: Wrench,
+    industry: "Plumbing Business",
+    items: ["Google Business support", "Service page copy", "Booking workflow setup"],
   },
   {
-    quote: "Professional, responsive, and innovative. Elevate Social helped us understand how AI can support business growth without overwhelming us with complicated technology.",
-    name: "David K.",
-    role: "Small Business Owner",
+    icon: Brush,
+    industry: "Cleaning Company",
+    items: ["Quote intake form", "Follow-up automation", "Social content planning"],
   },
+  {
+    icon: Sparkle,
+    industry: "Salon",
+    items: ["Offer posts & promos", "Booking reminder system", "Client intake automation"],
+  },
+];
+
+const workflowExamples = [
+  "Website lead capture workflow",
+  "Google Sheets CRM setup",
+  "Telegram/email lead alerts",
+  "AI chatbot setup",
+  "Client intake automation",
+  "Booking workflow",
+  "Follow-up reminder system",
+  "n8n workflow blueprint",
+  "Human approval system",
 ];
 
 export const Route = createFileRoute("/")({
