@@ -146,21 +146,28 @@ const launchSystem = [
 const services = [
   {
     icon: Rocket,
-    badge: "$149",
+    badge: "From $149",
     title: "Business Presence Launch",
     desc: "Get your business looking professional online in days.",
     items: ["Facebook Setup", "Instagram Setup", "LinkedIn Setup", "Professional Bio Writing", "CTA Optimization", "Keywords & Hashtags"],
   },
   {
     icon: Share2,
-    badge: "$299",
+    badge: "From $299/mo",
     title: "AI Content Engine",
     desc: "AI-powered content systems that keep your brand consistent.",
     items: ["30-Day Content Calendar", "30 Captions", "Hashtag Strategy", "Content Planning", "Canva Design Briefs"],
   },
   {
+    icon: Workflow,
+    badge: "From $299",
+    title: "AI Workflow Automation Setup",
+    desc: "Practical AI workflows that capture leads, organize info, and reduce manual work.",
+    items: ["Lead Capture Workflow", "Google Sheets CRM", "Telegram/Email Alerts", "Client Intake Forms", "Booking & Follow-up"],
+  },
+  {
     icon: Bot,
-    badge: "Starting at $499/month",
+    badge: "From $499/mo",
     title: "AI Growth System",
     desc: "Complete AI system for lead generation and business automation.",
     items: ["Lead Capture Systems", "AI Automation", "Client Onboarding Automation", "Appointment Booking Workflows", "AI Assistant Setup"],
