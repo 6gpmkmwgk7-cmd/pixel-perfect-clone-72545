@@ -16,7 +16,7 @@ export function AIDashboardMockup({ className = "" }: { className?: string }) {
             <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
             <span className="h-2.5 w-2.5 rounded-full bg-green-400/80" />
           </div>
-          <span className="text-[10px] font-mono text-cyan/70">elevate.ai / dashboard</span>
+          <span className="text-[10px] font-mono text-cyan/70">elevate.ai / sample dashboard</span>
           <span className="inline-flex items-center gap-1 rounded-full border border-green-400/30 bg-green-400/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-green-300">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400" />
             Live
