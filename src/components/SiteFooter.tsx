@@ -1,8 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Linkedin, Mail, ShieldCheck } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import logo from "@/assets/logo.png";
 
 export function SiteFooter() {
+  const { t } = useTranslation();
   return (
     <footer className="relative overflow-hidden bg-navy text-white/80">
       <div className="absolute inset-0 grid-pattern opacity-10" />
@@ -19,7 +21,7 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-white/70">
-              Helping small businesses grow through AI-powered content, automation, and modern marketing systems.
+              {t("footer.tagline")}
             </p>
             <div className="mt-6 flex items-center gap-3">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
@@ -36,44 +38,44 @@ export function SiteFooter() {
               </Link>
             </div>
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-cyan/30 bg-cyan/10 px-3 py-1.5 text-xs font-medium text-cyan">
-              <ShieldCheck className="h-3.5 w-3.5" /> Secure & Privacy-Focused
+              <ShieldCheck className="h-3.5 w-3.5" /> {t("footer.secure")}
             </div>
           </div>
 
           <div>
-            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-white">Company</h4>
+            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-white">{t("footer.company")}</h4>
             <ul className="mt-5 space-y-3 text-sm">
-              <li><Link to="/about" className="transition hover:text-cyan">About</Link></li>
-              <li><Link to="/services" className="transition hover:text-cyan">Services</Link></li>
-              <li><Link to="/case-studies" className="transition hover:text-cyan">Case Studies</Link></li>
-              <li><Link to="/pricing" className="transition hover:text-cyan">Pricing</Link></li>
-              <li><Link to="/contact" className="transition hover:text-cyan">Contact</Link></li>
+              <li><Link to="/about" className="transition hover:text-cyan">{t("footer.about")}</Link></li>
+              <li><Link to="/services" className="transition hover:text-cyan">{t("footer.services")}</Link></li>
+              <li><Link to="/case-studies" className="transition hover:text-cyan">{t("footer.case_studies")}</Link></li>
+              <li><Link to="/pricing" className="transition hover:text-cyan">{t("footer.pricing")}</Link></li>
+              <li><Link to="/contact" className="transition hover:text-cyan">{t("footer.contact")}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-white">Get Started</h4>
+            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-white">{t("footer.get_started")}</h4>
             <ul className="mt-5 space-y-3 text-sm">
-              <li><Link to="/free-audit" className="transition hover:text-cyan">Free AI Audit</Link></li>
-              <li><Link to="/contact" className="transition hover:text-cyan">Book Consultation</Link></li>
-              <li><Link to="/privacy" className="transition hover:text-cyan">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="transition hover:text-cyan">Terms & Conditions</Link></li>
+              <li><Link to="/free-audit" className="transition hover:text-cyan">{t("footer.free_ai_audit")}</Link></li>
+              <li><Link to="/contact" className="transition hover:text-cyan">{t("footer.book_consultation")}</Link></li>
+              <li><Link to="/privacy" className="transition hover:text-cyan">{t("footer.privacy")}</Link></li>
+              <li><Link to="/terms" className="transition hover:text-cyan">{t("footer.terms")}</Link></li>
             </ul>
             <Link
               to="/free-audit"
               className="mt-6 inline-flex rounded-full bg-gradient-gold px-5 py-2.5 text-sm font-bold text-white shadow-glow transition hover:scale-105"
             >
-              🚀 Book Free Audit
+              {t("cta.book_free_audit_short")}
             </Link>
           </div>
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50 md:flex-row">
-          <p>© 2026 Elevate Social. All Rights Reserved.</p>
+          <p>{t("footer.copyright")}</p>
           <div className="flex items-center gap-5">
-            <Link to="/privacy" className="hover:text-cyan">Privacy</Link>
-            <Link to="/terms" className="hover:text-cyan">Terms</Link>
-            <Link to="/contact" className="hover:text-cyan">Contact</Link>
+            <Link to="/privacy" className="hover:text-cyan">{t("footer.privacy_short")}</Link>
+            <Link to="/terms" className="hover:text-cyan">{t("footer.terms_short")}</Link>
+            <Link to="/contact" className="hover:text-cyan">{t("footer.contact")}</Link>
           </div>
         </div>
       </div>

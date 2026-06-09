@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { MessageCircle, X, Send, Bot, User, Sparkles, Minimize2 } from "lucide-react";
 
 interface Message {
