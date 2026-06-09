@@ -22,16 +22,27 @@ Keep responses short and helpful (2-4 sentences max). Be conversational. If some
 Never make up specific case studies or client results. If asked something outside your scope, suggest booking a free call.`;
 
 export function ChatBot() {
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [minimized, setMinimized] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
       role: "assistant",
-      content: "Hi! I'm Elevate Social AI. Ask about content, websites, automation, pricing, design, or booking.",
+      content: t("chat.welcome"),
       ts: Date.now(),
     },
   ]);
+
+  // Keep the welcome message in sync with the active language until the user
+  // sends their first message.
+  useEffect(() => {
+    setMessages((prev) =>
+      prev.length === 1 && prev[0].id === "welcome"
+        ? [{ ...prev[0], content: t("chat.welcome") }]
+        : prev,
+    );
+  }, [i18n.language, t]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -69,11 +80,16 @@ export function ChatBot() {
       const res = await fetch("https://elevatedsocial111.app.n8n.cloud/webhook/elevate-social-superagent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, sessionId, channel: "lovable_website" }),
+        body: JSON.stringify({
+          message: text,
+          sessionId,
+          channel: "lovable_website",
+          language: i18n.language || "en",
+        }),
       });
 
       const raw = await res.text();
-      let reply = "Sorry, something went wrong. Please try again or book a free AI audit.";
+      let reply = t("chat.error");
       try {
         const data = JSON.parse(raw);
         reply = data.reply ?? data.output ?? data.message ?? data.text ?? data.response ?? reply;
@@ -91,7 +107,7 @@ export function ChatBot() {
     } catch {
       setMessages((prev) => [
         ...prev,
-        { id: (Date.now() + 1).toString(), role: "assistant", content: "Sorry, something went wrong. Please try again or book a free AI audit.", ts: Date.now() },
+        { id: (Date.now() + 1).toString(), role: "assistant", content: t("chat.error"), ts: Date.now() },
       ]);
     } finally {
       setLoading(false);
