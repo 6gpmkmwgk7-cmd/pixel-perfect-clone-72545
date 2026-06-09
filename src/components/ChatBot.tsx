@@ -134,7 +134,7 @@ export function ChatBot() {
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan" />
             </span>
           </div>
-          <span>AI Chat</span>
+          <span>{t("chat.button")}</span>
         </button>
       )}
 
@@ -154,8 +154,8 @@ export function ChatBot() {
                 <span className="absolute -right-0.5 -bottom-0.5 h-3 w-3 rounded-full border-2 border-navy bg-green-400" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-white">Elevate Social AI Assistant</p>
-                <p className="text-[10px] text-cyan">Ask about content, websites, automation, pricing, design, or booking.</p>
+                <p className="text-sm font-semibold text-white">{t("chat.title")}</p>
+                <p className="text-[10px] text-cyan">{t("chat.subtitle")}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -224,7 +224,7 @@ export function ChatBot() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={onKey}
-                    placeholder="Ask me anything..."
+                    placeholder={t("chat.placeholder")}
                     className="flex-1 bg-transparent text-sm text-white placeholder-white/40 outline-none"
                   />
                   <button
@@ -235,7 +235,7 @@ export function ChatBot() {
                     <Send className="h-3.5 w-3.5" />
                   </button>
                 </div>
-                <p className="mt-2 text-center text-[10px] text-white/30">Elevate Social AI Assistant</p>
+                <p className="mt-2 text-center text-[10px] text-white/40">{t("chat.language_note")}</p>
               </div>
             </>
           )}
