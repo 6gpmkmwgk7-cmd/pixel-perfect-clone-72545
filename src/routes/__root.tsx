@@ -13,6 +13,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ChatBot } from "@/components/ChatBot";
 import logo from "@/assets/logo.png";
+import "@/i18n";
 
 function NotFoundComponent() {
   return (

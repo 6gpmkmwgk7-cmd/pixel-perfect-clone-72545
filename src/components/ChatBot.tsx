@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { MessageCircle, X, Send, Bot, User, Sparkles, Minimize2 } from "lucide-react";
 
 interface Message {
@@ -21,16 +22,27 @@ Keep responses short and helpful (2-4 sentences max). Be conversational. If some
 Never make up specific case studies or client results. If asked something outside your scope, suggest booking a free call.`;
 
 export function ChatBot() {
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [minimized, setMinimized] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
       role: "assistant",
-      content: "Hi! I'm Elevate Social AI. Ask about content, websites, automation, pricing, design, or booking.",
+      content: t("chat.welcome"),
       ts: Date.now(),
     },
   ]);
+
+  // Keep the welcome message in sync with the active language until the user
+  // sends their first message.
+  useEffect(() => {
+    setMessages((prev) =>
+      prev.length === 1 && prev[0].id === "welcome"
+        ? [{ ...prev[0], content: t("chat.welcome") }]
+        : prev,
+    );
+  }, [i18n.language, t]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -68,11 +80,16 @@ export function ChatBot() {
       const res = await fetch("https://elevatedsocial111.app.n8n.cloud/webhook/elevate-social-superagent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, sessionId, channel: "lovable_website" }),
+        body: JSON.stringify({
+          message: text,
+          sessionId,
+          channel: "lovable_website",
+          language: i18n.language || "en",
+        }),
       });
 
       const raw = await res.text();
-      let reply = "Sorry, something went wrong. Please try again or book a free AI audit.";
+      let reply = t("chat.error");
       try {
         const data = JSON.parse(raw);
         reply = data.reply ?? data.output ?? data.message ?? data.text ?? data.response ?? reply;
@@ -90,7 +107,7 @@ export function ChatBot() {
     } catch {
       setMessages((prev) => [
         ...prev,
-        { id: (Date.now() + 1).toString(), role: "assistant", content: "Sorry, something went wrong. Please try again or book a free AI audit.", ts: Date.now() },
+        { id: (Date.now() + 1).toString(), role: "assistant", content: t("chat.error"), ts: Date.now() },
       ]);
     } finally {
       setLoading(false);
@@ -117,7 +134,7 @@ export function ChatBot() {
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan" />
             </span>
           </div>
-          <span>AI Chat</span>
+          <span>{t("chat.button")}</span>
         </button>
       )}
 
@@ -137,8 +154,8 @@ export function ChatBot() {
                 <span className="absolute -right-0.5 -bottom-0.5 h-3 w-3 rounded-full border-2 border-navy bg-green-400" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-white">Elevate Social AI Assistant</p>
-                <p className="text-[10px] text-cyan">Ask about content, websites, automation, pricing, design, or booking.</p>
+                <p className="text-sm font-semibold text-white">{t("chat.title")}</p>
+                <p className="text-[10px] text-cyan">{t("chat.subtitle")}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -207,7 +224,7 @@ export function ChatBot() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={onKey}
-                    placeholder="Ask me anything..."
+                    placeholder={t("chat.placeholder")}
                     className="flex-1 bg-transparent text-sm text-white placeholder-white/40 outline-none"
                   />
                   <button
@@ -218,7 +235,7 @@ export function ChatBot() {
                     <Send className="h-3.5 w-3.5" />
                   </button>
                 </div>
-                <p className="mt-2 text-center text-[10px] text-white/30">Elevate Social AI Assistant</p>
+                <p className="mt-2 text-center text-[10px] text-white/40">{t("chat.language_note")}</p>
               </div>
             </>
           )}

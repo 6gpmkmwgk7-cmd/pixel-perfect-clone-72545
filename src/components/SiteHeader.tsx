@@ -1,20 +1,23 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Menu, X, LogIn, UserPlus, Sparkles } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { AuthModal } from "@/components/AuthModal";
+import { LanguageSelector } from "@/components/LanguageSelector";
 
 const nav = [
-  { to: "/", label: "Home" },
-  { to: "/ai-solutions", label: "AI Solutions" },
-  { to: "/services", label: "Services" },
-  { to: "/pricing", label: "Pricing" },
-  { to: "/free-audit", label: "Free Audit" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", key: "nav.home" },
+  { to: "/ai-solutions", key: "nav.ai_solutions" },
+  { to: "/services", key: "nav.services" },
+  { to: "/pricing", key: "nav.pricing" },
+  { to: "/free-audit", key: "nav.free_audit" },
+  { to: "/about", key: "nav.about" },
+  { to: "/contact", key: "nav.contact" },
 ] as const;
 
 export function SiteHeader() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [authMode, setAuthMode] = useState<"login" | "signup" | null>(null);
 
@@ -61,30 +64,31 @@ export function SiteHeader() {
                   </span>
                 </span>
                 <span className="mt-1 flex items-center gap-2">
-                  <span className="text-xs font-bold uppercase tracking-[0.22em] text-white/50">Agency</span>
+                  <span className="text-xs font-bold uppercase tracking-[0.22em] text-white/50">{t("header.agency")}</span>
                   <span className="hidden sm:inline-flex items-center gap-1 rounded-full border border-cyan/30 bg-cyan/10 px-2 py-0.5 text-[10px] font-semibold text-cyan">
-                    <Sparkles className="h-2.5 w-2.5" /> AI-Powered
+                    <Sparkles className="h-2.5 w-2.5" /> {t("header.ai_powered")}
                   </span>
                 </span>
                 <span className="mt-1.5 hidden text-[11px] font-medium text-white/35 tracking-wide md:block">
-                  AI-Powered Content for Modern Businesses
+                  {t("header.tagline")}
                 </span>
               </span>
             </Link>
 
             {/* RIGHT: Auth + Primary CTA */}
             <div className="hidden items-center gap-2 lg:flex shrink-0">
+              <LanguageSelector />
               <button
                 onClick={() => setAuthMode("login")}
                 className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-4 py-2.5 text-sm font-medium text-white/80 backdrop-blur transition hover:border-cyan/40 hover:bg-white/10 hover:text-white"
               >
-                <LogIn className="h-3.5 w-3.5" /> Sign In
+                <LogIn className="h-3.5 w-3.5" /> {t("cta.sign_in")}
               </button>
               <Link
                 to="/free-audit"
                 className="btn-premium inline-flex items-center gap-1.5 rounded-full bg-gradient-gold px-5 py-2.5 text-sm font-bold text-white shadow-glow transition hover:scale-105"
               >
-                🚀 Book Free AI Growth Audit
+                {t("cta.book_free_audit")}
               </Link>
             </div>
 
@@ -111,18 +115,19 @@ export function SiteHeader() {
                   activeProps={{ className: "text-foreground after:scale-x-100" }}
                   activeOptions={{ exact: n.to === "/" }}
                 >
-                  {n.label}
+                  {t(n.key)}
                 </Link>
               ))}
             </nav>
 
             {/* Mobile auth row in collapsed nav */}
             <div className="flex items-center gap-2 py-2 lg:hidden">
+              <LanguageSelector variant="compact" />
               <button onClick={() => setAuthMode("login")} className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground">
-                <LogIn className="h-3 w-3" /> Sign In
+                <LogIn className="h-3 w-3" /> {t("cta.sign_in")}
               </button>
               <button onClick={() => setAuthMode("signup")} className="inline-flex items-center gap-1 rounded-full bg-gradient-gold px-3 py-1.5 text-xs font-semibold text-white">
-                <UserPlus className="h-3 w-3" /> Sign Up
+                <UserPlus className="h-3 w-3" /> {t("cta.sign_up")}
               </button>
             </div>
 
@@ -131,7 +136,7 @@ export function SiteHeader() {
               to="/free-audit"
               className="hidden rounded-full bg-navy text-white border border-cyan/30 px-5 py-2 text-xs font-semibold tracking-wide transition hover:shadow-glow hover:border-cyan/60 lg:inline-flex"
             >
-              🎯 Free AI Audit
+              {t("cta.free_ai_audit")}
             </Link>
           </div>
         </div>
@@ -147,15 +152,15 @@ export function SiteHeader() {
                   onClick={() => setOpen(false)}
                   className="border-b border-border/40 py-3 text-sm font-medium last:border-0"
                 >
-                  {n.label}
+                  {t(n.key)}
                 </Link>
               ))}
               <div className="mt-4 flex flex-col gap-2">
                 <button onClick={() => { setOpen(false); setAuthMode("login"); }} className="inline-flex items-center justify-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-medium">
-                  <LogIn className="h-3.5 w-3.5" /> Sign In
+                  <LogIn className="h-3.5 w-3.5" /> {t("cta.sign_in")}
                 </button>
                 <button onClick={() => { setOpen(false); setAuthMode("signup"); }} className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-gold px-5 py-2.5 text-sm font-semibold text-white shadow-glow">
-                  <UserPlus className="h-3.5 w-3.5" /> Sign Up Free
+                  <UserPlus className="h-3.5 w-3.5" /> {t("cta.sign_up_free")}
                 </button>
               </div>
             </div>
