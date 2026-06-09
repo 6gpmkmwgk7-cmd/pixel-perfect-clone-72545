@@ -64,13 +64,13 @@ export function SiteHeader() {
                   </span>
                 </span>
                 <span className="mt-1 flex items-center gap-2">
-                  <span className="text-xs font-bold uppercase tracking-[0.22em] text-white/50">Agency</span>
+                  <span className="text-xs font-bold uppercase tracking-[0.22em] text-white/50">{t("header.agency")}</span>
                   <span className="hidden sm:inline-flex items-center gap-1 rounded-full border border-cyan/30 bg-cyan/10 px-2 py-0.5 text-[10px] font-semibold text-cyan">
-                    <Sparkles className="h-2.5 w-2.5" /> AI-Powered
+                    <Sparkles className="h-2.5 w-2.5" /> {t("header.ai_powered")}
                   </span>
                 </span>
                 <span className="mt-1.5 hidden text-[11px] font-medium text-white/35 tracking-wide md:block">
-                  AI-Powered Content for Modern Businesses
+                  {t("header.tagline")}
                 </span>
               </span>
             </Link>
