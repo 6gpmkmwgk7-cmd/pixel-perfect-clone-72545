@@ -1,20 +1,23 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Menu, X, LogIn, UserPlus, Sparkles } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { AuthModal } from "@/components/AuthModal";
+import { LanguageSelector } from "@/components/LanguageSelector";
 
 const nav = [
-  { to: "/", label: "Home" },
-  { to: "/ai-solutions", label: "AI Solutions" },
-  { to: "/services", label: "Services" },
-  { to: "/pricing", label: "Pricing" },
-  { to: "/free-audit", label: "Free Audit" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", key: "nav.home" },
+  { to: "/ai-solutions", key: "nav.ai_solutions" },
+  { to: "/services", key: "nav.services" },
+  { to: "/pricing", key: "nav.pricing" },
+  { to: "/free-audit", key: "nav.free_audit" },
+  { to: "/about", key: "nav.about" },
+  { to: "/contact", key: "nav.contact" },
 ] as const;
 
 export function SiteHeader() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [authMode, setAuthMode] = useState<"login" | "signup" | null>(null);
 
