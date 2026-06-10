@@ -26,35 +26,49 @@ export function SiteHeader() {
       <header className="sticky top-0 z-50">
 
         {/* ── TOP BRAND BANNER ── */}
-        <div className="relative overflow-hidden bg-gradient-to-r from-navy-deep via-navy to-[#1e1b4b] border-b border-white/10">
-          {/* subtle grid overlay */}
-          <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none" />
-          {/* glow blobs */}
-          <div className="absolute -left-20 top-1/2 -translate-y-1/2 h-40 w-40 rounded-full bg-cyan/20 blur-3xl pointer-events-none" />
-          <div className="absolute -right-20 top-1/2 -translate-y-1/2 h-40 w-40 rounded-full bg-purple/20 blur-3xl pointer-events-none" />
+        <div className="relative overflow-hidden border-b border-white/10 bg-[radial-gradient(ellipse_at_top_left,#1e3a8a_0%,transparent_55%),radial-gradient(ellipse_at_top_right,#4c1d95_0%,transparent_55%),linear-gradient(135deg,#020617_0%,#0b1437_50%,#0a0f2c_100%)]">
+            {/* subtle grid overlay */}
+            <div className="absolute inset-0 grid-pattern opacity-[0.07] pointer-events-none" />
+            {/* glow blobs */}
+            <div className="absolute -left-24 top-1/2 -translate-y-1/2 h-56 w-56 rounded-full bg-cyan/25 blur-[90px] pointer-events-none" />
+            <div className="absolute left-1/2 -top-20 h-48 w-[40rem] -translate-x-1/2 rounded-full bg-blue-500/15 blur-[100px] pointer-events-none" />
+            <div className="absolute -right-24 top-1/2 -translate-y-1/2 h-56 w-56 rounded-full bg-purple/25 blur-[90px] pointer-events-none" />
+            {/* bottom hairline shimmer */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan/40 to-transparent" />
 
-          <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 md:py-5">
+          <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-5 md:py-7">
 
             {/* LEFT: Logo + Full Name */}
-            <Link to="/" className="group flex items-center gap-5 md:gap-6 min-w-0">
-              {/* Logo — large, full square, no crop */}
+            <Link to="/" className="group flex items-center gap-5 md:gap-7 min-w-0">
+              {/* Logo — premium ring + glow */}
               <span className="relative shrink-0">
+                {/* outer animated gradient ring */}
+                <span
+                  aria-hidden
+                  className="absolute -inset-[3px] rounded-full opacity-80 blur-[2px] transition-opacity duration-500 group-hover:opacity-100"
+                  style={{
+                    background:
+                      "conic-gradient(from 0deg, #06B6D4, #2563EB, #8B5CF6, #06B6D4)",
+                  }}
+                />
                 <img
                   src={logo}
                   alt="Elevate Socials Agency"
-                  className="h-[60px] w-[60px] md:h-[68px] md:w-[68px] object-contain bg-white p-1.5 shadow-[0_0_30px_rgba(6,182,212,0.3)] ring-2 ring-cyan/30 transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] animate-logo-in rounded-full"
+                  className="relative h-[72px] w-[72px] md:h-[88px] md:w-[88px] object-contain bg-white p-2 rounded-full ring-1 ring-white/40 shadow-[0_8px_40px_-4px_rgba(6,182,212,0.55)] transition-all duration-500 group-hover:scale-[1.04] group-hover:shadow-[0_10px_60px_-4px_rgba(6,182,212,0.75)] animate-logo-in"
                 />
-                {/* animated ring */}
-                <span className="pointer-events-none absolute -inset-1 rounded-2xl ring-2 ring-cyan/20 animate-ping-soft" />
+                {/* soft animated outer halo */}
+                <span className="pointer-events-none absolute -inset-2 rounded-full ring-2 ring-cyan/20 animate-ping-soft" />
               </span>
 
               {/* Brand text */}
               <span className="flex flex-col leading-none min-w-0">
-                <span className="font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-                  Elevate{" "}
+                <span className="font-display text-[2rem] sm:text-4xl md:text-[2.75rem] font-black tracking-tight text-white drop-shadow-[0_2px_18px_rgba(6,182,212,0.25)]">
+                  <span className="text-white">Elevate</span>{" "}
                   <span
                     style={{
-                      background: "linear-gradient(90deg, #06B6D4 0%, #8B5CF6 50%, #2563EB 100%)",
+                      background:
+                        "linear-gradient(95deg, #22D3EE 0%, #60A5FA 40%, #A78BFA 75%, #22D3EE 100%)",
+                      backgroundSize: "200% 100%",
                       WebkitBackgroundClip: "text",
                       backgroundClip: "text",
                       color: "transparent",
@@ -63,13 +77,20 @@ export function SiteHeader() {
                     Socials
                   </span>
                 </span>
-                <span className="mt-1 flex items-center gap-2">
-                  <span className="text-xs font-bold uppercase tracking-[0.22em] text-white/50">{t("header.agency")}</span>
-                  <span className="hidden sm:inline-flex items-center gap-1 rounded-full border border-cyan/30 bg-cyan/10 px-2 py-0.5 text-[10px] font-semibold text-cyan">
+                <span className="mt-2.5 flex items-center gap-2.5">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.32em] text-white/60">
+                    {t("header.agency")}
+                  </span>
+                  <span className="h-3 w-px bg-white/20" />
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan/40 bg-gradient-to-r from-cyan/15 via-blue-500/10 to-purple/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-cyan-200 shadow-[0_0_18px_-4px_rgba(6,182,212,0.6)] backdrop-blur">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan/70 opacity-75" />
+                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan" />
+                    </span>
                     <Sparkles className="h-2.5 w-2.5" /> {t("header.ai_powered")}
                   </span>
                 </span>
-                <span className="mt-1.5 hidden text-[11px] font-medium text-white/35 tracking-wide md:block">
+                <span className="mt-2 hidden text-[11px] font-medium tracking-wide text-white/45 md:block">
                   {t("header.tagline")}
                 </span>
               </span>
@@ -95,7 +116,7 @@ export function SiteHeader() {
             {/* Mobile hamburger */}
             <button
               onClick={() => setOpen(!open)}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/5 text-white lg:hidden"
+              className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white shadow-[0_0_20px_-6px_rgba(6,182,212,0.6)] backdrop-blur transition hover:border-cyan/50 hover:bg-white/10 lg:hidden"
               aria-label="Menu"
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
