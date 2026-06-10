@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Reveal } from "@/components/Reveal";
 import { Counter } from "@/components/Counter";
 import { ParticleField } from "@/components/ParticleField";
 import { AIDashboardMockup } from "@/components/AIDashboardMockup";
 import { NetworkNodes } from "@/components/NetworkNodes";
 import { LogoMarquee } from "@/components/LogoMarquee";
+
 
 import heroBg from "@/assets/hero-bg.jpg";
 import {
@@ -116,12 +118,13 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const trustBadges = [
-  "AI Automation",
-  "Social Media Growth",
-  "Website Design",
-  "Lead Generation",
+const trustBadgeKeys = [
+  "home.trust.automation",
+  "home.trust.social",
+  "home.trust.website",
+  "home.trust.leads",
 ];
+
 
 const whyAi = [
   { icon: Zap, t: "Faster Content Creation", d: "Generate weeks of on-brand content in hours, not days." },
@@ -265,8 +268,11 @@ const faqs = [
 ];
 
 function HomePage() {
+  const { t } = useTranslation();
   const heroRef = useRef<HTMLDivElement | null>(null);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
+
+
 
   const onHeroMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const r = heroRef.current?.getBoundingClientRect();
@@ -311,20 +317,18 @@ function HomePage() {
           <div>
             <Reveal>
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan/30 bg-cyan/10 px-4 py-1.5 text-xs font-semibold text-cyan backdrop-blur">
-                <Sparkles className="h-3.5 w-3.5" /> AI-Powered Content for Modern Businesses
+                <Sparkles className="h-3.5 w-3.5" /> {t("home.hero.badge")}
               </div>
             </Reveal>
             <Reveal delay={120}>
               <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] md:text-7xl">
-                AI-Powered Marketing & Automation That Helps{" "}
-                <span className="text-shimmer">Small Businesses Grow Faster</span>
+                {t("home.hero.title_pre")}{" "}
+                <span className="text-shimmer">{t("home.hero.title_highlight")}</span>
               </h1>
             </Reveal>
             <Reveal delay={240}>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
-                We help restaurants, contractors, plumbers, landscapers, cleaning companies, and local
-                businesses generate more leads, save time, and grow through AI-powered content,
-                automation, websites, and marketing systems.
+                {t("home.hero.subtitle")}
               </p>
             </Reveal>
             <Reveal delay={360}>
@@ -333,27 +337,28 @@ function HomePage() {
                   to="/free-audit"
                   className="btn-premium group inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-105"
                 >
-                  🚀 Book Your Free AI Growth Audit
+                  {t("home.hero.cta_audit")}
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/case-studies"
                   className="btn-premium inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
                 >
-                  📈 View Case Studies
+                  {t("home.hero.cta_cases")}
                 </Link>
               </div>
             </Reveal>
             <Reveal delay={480}>
               <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
-                {trustBadges.map((b) => (
-                  <div key={b} className="inline-flex items-center gap-2 text-xs font-medium text-white/75">
-                    <CheckCircle2 className="h-4 w-4 text-cyan" /> {b}
+                {trustBadgeKeys.map((k) => (
+                  <div key={k} className="inline-flex items-center gap-2 text-xs font-medium text-white/75">
+                    <CheckCircle2 className="h-4 w-4 text-cyan" /> {t(k)}
                   </div>
                 ))}
               </div>
             </Reveal>
           </div>
+
 
           {/* AI Dashboard mockup with parallax */}
           <Reveal variant="zoom" delay={400}>
