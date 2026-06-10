@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Reveal } from "@/components/Reveal";
 import { Counter } from "@/components/Counter";
 import { ParticleField } from "@/components/ParticleField";
 import { AIDashboardMockup } from "@/components/AIDashboardMockup";
 import { NetworkNodes } from "@/components/NetworkNodes";
 import { LogoMarquee } from "@/components/LogoMarquee";
+
 
 import heroBg from "@/assets/hero-bg.jpg";
 import {
@@ -116,12 +118,13 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const trustBadges = [
-  "AI Automation",
-  "Social Media Growth",
-  "Website Design",
-  "Lead Generation",
+const trustBadgeKeys = [
+  "home.trust.automation",
+  "home.trust.social",
+  "home.trust.website",
+  "home.trust.leads",
 ];
+
 
 const whyAi = [
   { icon: Zap, t: "Faster Content Creation", d: "Generate weeks of on-brand content in hours, not days." },
@@ -265,8 +268,11 @@ const faqs = [
 ];
 
 function HomePage() {
+  const { t } = useTranslation();
   const heroRef = useRef<HTMLDivElement | null>(null);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
+
+
 
   const onHeroMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const r = heroRef.current?.getBoundingClientRect();
@@ -311,20 +317,18 @@ function HomePage() {
           <div>
             <Reveal>
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan/30 bg-cyan/10 px-4 py-1.5 text-xs font-semibold text-cyan backdrop-blur">
-                <Sparkles className="h-3.5 w-3.5" /> AI-Powered Content for Modern Businesses
+                <Sparkles className="h-3.5 w-3.5" /> {t("home.hero.badge")}
               </div>
             </Reveal>
             <Reveal delay={120}>
               <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] md:text-7xl">
-                AI-Powered Marketing & Automation That Helps{" "}
-                <span className="text-shimmer">Small Businesses Grow Faster</span>
+                {t("home.hero.title_pre")}{" "}
+                <span className="text-shimmer">{t("home.hero.title_highlight")}</span>
               </h1>
             </Reveal>
             <Reveal delay={240}>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
-                We help restaurants, contractors, plumbers, landscapers, cleaning companies, and local
-                businesses generate more leads, save time, and grow through AI-powered content,
-                automation, websites, and marketing systems.
+                {t("home.hero.subtitle")}
               </p>
             </Reveal>
             <Reveal delay={360}>
@@ -333,27 +337,28 @@ function HomePage() {
                   to="/free-audit"
                   className="btn-premium group inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-105"
                 >
-                  🚀 Book Your Free AI Growth Audit
+                  {t("home.hero.cta_audit")}
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/case-studies"
                   className="btn-premium inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
                 >
-                  📈 View Case Studies
+                  {t("home.hero.cta_cases")}
                 </Link>
               </div>
             </Reveal>
             <Reveal delay={480}>
               <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
-                {trustBadges.map((b) => (
-                  <div key={b} className="inline-flex items-center gap-2 text-xs font-medium text-white/75">
-                    <CheckCircle2 className="h-4 w-4 text-cyan" /> {b}
+                {trustBadgeKeys.map((k) => (
+                  <div key={k} className="inline-flex items-center gap-2 text-xs font-medium text-white/75">
+                    <CheckCircle2 className="h-4 w-4 text-cyan" /> {t(k)}
                   </div>
                 ))}
               </div>
             </Reveal>
           </div>
+
 
           {/* AI Dashboard mockup with parallax */}
           <Reveal variant="zoom" delay={400}>
@@ -374,11 +379,12 @@ function HomePage() {
         <div className="absolute -top-32 left-1/3 h-72 w-72 rounded-full bg-cyan/20 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-cyan">Capabilities Snapshot</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-cyan">{t("home.results.eyebrow")}</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              What Our <span className="text-gradient">AI Systems Can Do</span>
+              {t("home.results.title_pre")} <span className="text-gradient">{t("home.results.title_highlight")}</span>
             </h2>
-            <p className="mt-4 text-sm text-white/60">Illustrative metrics from our delivery system — not guaranteed client results.</p>
+            <p className="mt-4 text-sm text-white/60">{t("home.results.note")}</p>
+
           </div>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {resultsMetrics.map((m, i) => (
@@ -403,19 +409,17 @@ function HomePage() {
       <section className="relative overflow-hidden py-24">
         <div className="absolute inset-0 grid-pattern opacity-30" />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-electric">Our Purpose</p>
+          <p className="text-sm font-semibold uppercase tracking-wider text-electric">{t("home.purpose.eyebrow")}</p>
           <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-            Why <span className="text-gradient">Elevate Social</span> Exists
+            {t("home.purpose.title_pre")} <span className="text-gradient">{t("home.purpose.title_highlight")}</span> {t("home.purpose.title_post")}
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Small businesses deserve access to the same AI-powered marketing and automation
-            tools used by larger companies.
+            {t("home.purpose.p1")}
           </p>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Elevate Social combines modern AI technology with practical business strategy to
-            help businesses create content faster, automate repetitive tasks, and focus on
-            growth.
+            {t("home.purpose.p2")}
           </p>
+
         </div>
       </section>
 
@@ -423,13 +427,14 @@ function HomePage() {
       <section className="relative overflow-hidden bg-secondary/50 py-24">
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Why AI Matters</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">{t("home.why.eyebrow")}</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              Marketing built for the <span className="text-gradient">AI era</span>
+              {t("home.why.title_pre")} <span className="text-gradient">{t("home.why.title_highlight")}</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              The businesses winning today are the ones using AI to move faster and operate smarter.
+              {t("home.why.subtitle")}
             </p>
+
           </div>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {whyAi.map((w, i) => (
@@ -497,13 +502,14 @@ function HomePage() {
         <div className="absolute inset-0 grid-pattern opacity-20" />
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">How It Works</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">{t("home.growth.eyebrow")}</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              How We Help You <span className="text-gradient">Grow</span>
+              {t("home.growth.title_pre")} <span className="text-gradient">{t("home.growth.title_highlight")}</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              A clear 6-step path from free audit to ready-to-use systems — with human review at every delivery.
+              {t("home.growth.subtitle")}
             </p>
+
           </div>
           <div className="relative mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
@@ -527,13 +533,14 @@ function HomePage() {
       <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Pricing</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">{t("home.pricing.eyebrow")}</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              Transparent plans built to <span className="text-gradient">scale with you</span>
+              {t("home.pricing.title_pre")} <span className="text-gradient">{t("home.pricing.title_highlight")}</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Start where you are. Scale into full AI-powered automation when you're ready.
+              {t("home.pricing.subtitle")}
             </p>
+
           </div>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {services.map((s) => (
@@ -547,7 +554,7 @@ function HomePage() {
               >
                 {s.popular && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-gold px-4 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-glow">
-                    🔥 Most Popular
+                    {t("home.pricing.popular")}
                   </span>
                 )}
                 <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${s.featured ? "bg-gradient-gold" : "bg-gradient-accent"} text-white`}>
@@ -574,16 +581,15 @@ function HomePage() {
                       : "bg-primary text-primary-foreground hover:opacity-90"
                   }`}
                 >
-                  Get Started <ArrowRight className="h-4 w-4" />
+                  {t("cta.get_started")} <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             ))}
           </div>
           <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-border bg-card/60 p-5 text-center text-sm text-muted-foreground backdrop-blur">
-            Custom AI Systems are quoted after a Free AI Growth Audit. Final pricing depends on
-            your business type, scope, tools required, and timeline — we recommend starting with
-            a Free AI Growth Audit.
+            {t("home.pricing.note")}
           </div>
+
         </div>
       </section>
 
@@ -591,9 +597,9 @@ function HomePage() {
       <section className="mx-auto max-w-5xl px-6 pt-4">
         <div className="rounded-2xl border border-cyan/30 bg-cyan/5 p-6 text-center text-sm text-muted-foreground">
           <ShieldCheck className="mx-auto mb-2 h-5 w-5 text-cyan" />
-          We do not promise guaranteed sales, rankings, followers, or revenue. Instead, we build
-          practical AI-powered systems designed to improve consistency, speed, visibility, and follow-up.
+          {t("home.safety.text")}
         </div>
+
       </section>
 
 
@@ -604,14 +610,15 @@ function HomePage() {
           <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-purple/10 blur-3xl" />
           <div className="relative mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan/30 bg-cyan/10 px-4 py-1.5 text-xs font-semibold text-cyan">
-              <Lock className="h-3.5 w-3.5" /> Secure Checkout
+              <Lock className="h-3.5 w-3.5" /> {t("home.payments.eyebrow")}
             </div>
             <h2 className="mt-5 font-display text-4xl font-bold md:text-5xl">
-              Secure <span className="text-gradient">Payment Options</span>
+              {t("home.payments.title_pre")} <span className="text-gradient">{t("home.payments.title_highlight")}</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              We offer secure and flexible payment methods for clients worldwide.
+              {t("home.payments.subtitle")}
             </p>
+
           </div>
           <div className="relative mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {paymentMethods.map((p) => (
@@ -623,8 +630,9 @@ function HomePage() {
           </div>
           <p className="relative mt-10 flex items-center justify-center gap-2 text-center text-xs text-muted-foreground">
             <ShieldCheck className="h-4 w-4 text-cyan" />
-            All payments are processed through secure and encrypted payment gateways.
+            {t("home.payments.note")}
           </p>
+
         </div>
       </section>
 
@@ -792,8 +800,9 @@ function HomePage() {
       <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Industries We Help</p>
-            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">Built for local businesses</h2>
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">{t("home.industries.eyebrow")}</p>
+            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">{t("home.industries.title")}</h2>
+
           </div>
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {industries.map((i) => (
@@ -864,23 +873,23 @@ function HomePage() {
           <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-cyan/20 blur-3xl" />
           <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-wider text-cyan">Free AI Growth Audit</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-cyan">{t("home.audit.eyebrow")}</p>
               <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-                Discover what's <span className="text-gradient">holding your business back</span>
+                {t("home.audit.title_pre")} <span className="text-gradient">{t("home.audit.title_highlight")}</span>
               </h2>
               <p className="mt-5 text-white/75">
-                Get a complimentary AI growth audit and find out exactly where content and
-                automation can move the needle.
+                {t("home.audit.subtitle")}
               </p>
               <Link
                 to="/free-audit"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:opacity-95"
               >
-                Claim Your Free Audit <ArrowRight className="h-4 w-4" />
+                {t("home.audit.cta")} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
             <div>
-              <p className="text-sm font-semibold text-cyan">Your audit includes:</p>
+              <p className="text-sm font-semibold text-cyan">{t("home.audit.includes")}</p>
+
               <ul className="mt-4 space-y-3">
                 {auditPoints.map((p) => (
                   <li key={p} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-3 text-sm backdrop-blur">
@@ -902,10 +911,11 @@ function HomePage() {
           <Reveal>
             <div className="text-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-electric/30 bg-electric/10 px-4 py-1.5 text-xs font-semibold text-electric">
-                <ShieldCheck className="h-3.5 w-3.5" /> Founder-Led Agency
+                <ShieldCheck className="h-3.5 w-3.5" /> {t("home.founder.eyebrow")}
               </div>
               <h2 className="mt-5 font-display text-4xl font-bold md:text-5xl">
-                Meet The <span className="text-gradient">Founder</span>
+                {t("home.founder.title_pre")} <span className="text-gradient">{t("home.founder.title_highlight")}</span>
+
               </h2>
             </div>
           </Reveal>
@@ -952,7 +962,7 @@ function HomePage() {
               to="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-105"
             >
-              Book a Free Consultation <ArrowRight className="h-4 w-4" />
+              {t("home.founder.cta")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
@@ -961,12 +971,13 @@ function HomePage() {
       {/* CASE STUDIES */}
       <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-electric">Case Studies</p>
+          <p className="text-sm font-semibold uppercase tracking-wider text-electric">{t("home.cases.eyebrow")}</p>
           <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-            Featured <span className="text-gradient">Success Stories</span>
+            {t("home.cases.title_pre")} <span className="text-gradient">{t("home.cases.title_highlight")}</span>
           </h2>
           <p className="mt-5 text-muted-foreground">
-            Examples of branding, content, and automation systems built to help businesses grow.
+            {t("home.cases.subtitle")}
+
           </p>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -983,15 +994,15 @@ function HomePage() {
 
                 <div className="mt-5 space-y-4 text-sm">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan">Challenge</p>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan">{t("home.cases.challenge")}</p>
                     <p className="mt-1 text-muted-foreground">{c.challenge}</p>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan">Solution</p>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan">{t("home.cases.solution")}</p>
                     <p className="mt-1 text-muted-foreground">{c.solution}</p>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan">Results</p>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan">{t("home.cases.results")}</p>
                     <ul className="mt-2 space-y-1.5">
                       {c.results.map((r) => (
                         <li key={r} className="flex items-start gap-2">
@@ -1007,7 +1018,7 @@ function HomePage() {
                   to="/case-studies"
                   className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-electric transition group-hover:gap-3"
                 >
-                  View Project <ArrowRight className="h-4 w-4" />
+                  {t("cta.view_project")} <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </Reveal>
@@ -1019,12 +1030,13 @@ function HomePage() {
       <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-electric">Example Use Cases</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-electric">{t("home.usecases.eyebrow")}</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              How We Help <span className="text-gradient">Local Businesses</span>
+              {t("home.usecases.title_pre")} <span className="text-gradient">{t("home.usecases.title_highlight")}</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Practical examples of the systems we build for businesses like yours.
+              {t("home.usecases.subtitle")}
+
             </p>
           </div>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -1052,7 +1064,7 @@ function HomePage() {
               to="/free-audit"
               className="inline-flex items-center gap-2 rounded-full border border-electric/40 bg-electric/10 px-6 py-3 text-sm font-semibold text-electric transition hover:bg-electric/20"
             >
-              <TrendingUp className="h-4 w-4" /> Get My Business System Reviewed
+              <TrendingUp className="h-4 w-4" /> {t("home.usecases.cta")}
             </Link>
           </div>
         </div>
@@ -1064,7 +1076,8 @@ function HomePage() {
       <section className="mx-auto max-w-3xl px-6 py-24">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-electric">FAQ</p>
-          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">Common questions</h2>
+          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">{t("home.faq.title")}</h2>
+
         </div>
         <div className="mt-12 space-y-3">
           {faqs.map((f, i) => <FaqItem key={i} q={f.q} a={f.a} />)}
@@ -1091,7 +1104,7 @@ function HomePage() {
               to="/free-audit"
               className="btn-premium inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-105"
             >
-              <Rocket className="h-4 w-4" /> Book Your Free AI Growth Audit
+              <Rocket className="h-4 w-4" /> {t("cta.book_free_audit")}
             </Link>
             <Link
               to="/contact"
