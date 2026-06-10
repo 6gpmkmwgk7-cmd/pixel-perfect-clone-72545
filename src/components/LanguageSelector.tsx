@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { Globe, ChevronDown } from "lucide-react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { Globe, ChevronDown, Check } from "lucide-react";
 import { SUPPORTED_LANGUAGES, applyLanguage } from "@/i18n";
 import i18n from "@/i18n";
 
@@ -10,8 +11,13 @@ interface Props {
 export function LanguageSelector({ variant = "header" }: Props) {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState<string>("en");
+  const [mounted, setMounted] = useState(false);
+  const [pos, setPos] = useState<{ top: number; left: number; width: number } | null>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setMounted(true);
     const stored = typeof window !== "undefined" ? window.localStorage.getItem("elevate_lang") : null;
     const initial = stored && SUPPORTED_LANGUAGES.some((l) => l.code === stored) ? stored : "en";
     applyLanguage(initial);
@@ -21,11 +27,40 @@ export function LanguageSelector({ variant = "header" }: Props) {
     return () => { i18n.off("languageChanged", handler); };
   }, []);
 
+  // Position dropdown relative to trigger (fixed, viewport-relative)
+  useLayoutEffect(() => {
+    if (!open || !triggerRef.current) return;
+    const compute = () => {
+      const r = triggerRef.current!.getBoundingClientRect();
+      const panelWidth = 224; // ~ w-56
+      const vw = window.innerWidth;
+      const left = Math.min(Math.max(8, r.right - panelWidth), vw - panelWidth - 8);
+      setPos({ top: r.bottom + 8, left, width: panelWidth });
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    window.addEventListener("scroll", compute, true);
+    return () => {
+      window.removeEventListener("resize", compute);
+      window.removeEventListener("scroll", compute, true);
+    };
+  }, [open]);
+
+  // Outside click + Escape
   useEffect(() => {
     if (!open) return;
-    const close = () => setOpen(false);
-    window.addEventListener("click", close);
-    return () => window.removeEventListener("click", close);
+    const onClick = (e: MouseEvent) => {
+      const t = e.target as Node;
+      if (panelRef.current?.contains(t) || triggerRef.current?.contains(t)) return;
+      setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    window.addEventListener("mousedown", onClick);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("mousedown", onClick);
+      window.removeEventListener("keydown", onKey);
+    };
   }, [open]);
 
   const active = SUPPORTED_LANGUAGES.find((l) => l.code === current) ?? SUPPORTED_LANGUAGES[0];
@@ -35,39 +70,53 @@ export function LanguageSelector({ variant = "header" }: Props) {
     : "inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-white/70 transition hover:border-cyan/40 hover:text-white";
 
   return (
-    <div className="relative" onClick={(e) => e.stopPropagation()}>
+    <>
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen((o) => !o)}
         className={triggerClass}
         aria-haspopup="listbox"
         aria-expanded={open}
+        aria-label="Select language"
       >
         <Globe className="h-3.5 w-3.5" />
         <span>{active.native}</span>
-        <ChevronDown className="h-3 w-3 opacity-70" />
+        <ChevronDown className={`h-3 w-3 opacity-70 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
-      {open && (
-        <ul
+
+      {mounted && open && pos && createPortal(
+        <div
+          ref={panelRef}
           role="listbox"
-          className="absolute right-0 z-[60] mt-2 max-h-72 w-44 overflow-y-auto rounded-2xl border border-white/15 bg-navy/95 p-1.5 shadow-[0_10px_40px_rgba(6,182,212,0.25)] backdrop-blur"
+          aria-label="Language"
+          className="fixed z-[1000] max-h-[70vh] overflow-y-auto rounded-2xl border border-cyan/30 bg-[#0b1437]/98 p-1.5 shadow-[0_20px_60px_rgba(6,182,212,0.35)] backdrop-blur-xl animate-in fade-in slide-in-from-top-2"
+          style={{ top: pos.top, left: pos.left, width: pos.width }}
         >
-          {SUPPORTED_LANGUAGES.map((l) => (
-            <li key={l.code}>
+          {SUPPORTED_LANGUAGES.map((l) => {
+            const isActive = l.code === current;
+            return (
               <button
+                key={l.code}
                 type="button"
+                role="option"
+                aria-selected={isActive}
                 onClick={() => { applyLanguage(l.code); setCurrent(l.code); setOpen(false); }}
-                className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs transition hover:bg-white/10 ${
-                  l.code === current ? "bg-white/10 text-cyan" : "text-white/80"
+                className={`flex w-full items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left text-sm transition hover:bg-white/10 ${
+                  isActive ? "bg-cyan/15 text-cyan" : "text-white/85"
                 }`}
               >
-                <span className="font-medium">{l.native}</span>
-                <span className="text-[10px] uppercase tracking-wider text-white/40">{l.code}</span>
+                <span className="flex flex-col">
+                  <span className="font-medium leading-tight">{l.native}</span>
+                  <span className="text-[10px] uppercase tracking-wider text-white/40">{l.label} · {l.code}</span>
+                </span>
+                {isActive && <Check className="h-4 w-4 shrink-0 text-cyan" />}
               </button>
-            </li>
-          ))}
-        </ul>
+            );
+          })}
+        </div>,
+        document.body,
       )}
-    </div>
+    </>
   );
 }
