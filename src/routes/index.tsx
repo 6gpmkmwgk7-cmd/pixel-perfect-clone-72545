@@ -1076,7 +1076,8 @@ function HomePage() {
       <section className="mx-auto max-w-3xl px-6 py-24">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-electric">FAQ</p>
-          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">Common questions</h2>
+          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">{t("home.faq.title")}</h2>
+
         </div>
         <div className="mt-12 space-y-3">
           {faqs.map((f, i) => <FaqItem key={i} q={f.q} a={f.a} />)}
@@ -1103,7 +1104,7 @@ function HomePage() {
               to="/free-audit"
               className="btn-premium inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-105"
             >
-              <Rocket className="h-4 w-4" /> Book Your Free AI Growth Audit
+              <Rocket className="h-4 w-4" /> {t("cta.book_free_audit")}
             </Link>
             <Link
               to="/contact"
