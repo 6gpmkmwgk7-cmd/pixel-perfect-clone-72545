@@ -17,7 +17,7 @@ import "@/i18n";
 
 // ─── Structured Data ──────────────────────────────────────────────────────────
 
-const SITE_URL = "https://elevatesocial.ca";
+const SITE_URL = "https://elevatesocially.com";
 
 const organizationSchema = {
   "@context": "https://schema.org",
