@@ -52,7 +52,7 @@ const organizationSchema = {
     url: `${SITE_URL}/contact`,
     availableLanguage: ["English", "French", "Arabic", "Urdu", "Hindi", "Bengali", "Chinese", "Spanish"],
   }],
-  sameAs: ["https://www.instagram.com/elevatesocial", "https://www.linkedin.com/company/elevatesocial"],
+  sameAs: ["https://www.instagram.com/elevates_social", "https://www.facebook.com/share/17dkPgp1E4/", "https://www.linkedin.com/company/elevatesocial"],
   areaServed: [
     { "@type": "Country", name: "Canada" },
     { "@type": "Country", name: "United States" },
