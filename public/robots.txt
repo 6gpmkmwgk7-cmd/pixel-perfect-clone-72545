@@ -1,2 +1,38 @@
+# Elevate Social — robots.txt
+# https://elevatesocial.ca
+# Updated: 2026-06-14
+
+# ── Standard crawlers ────────────────────────────────────────────────────────
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_build/
+Disallow: /.lovable/
+
+# ── AI training crawlers — DISALLOW ─────────────────────────────────────────
+# Block training data harvesting; we want citations, not extraction
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# ── AI citation crawlers — ALLOW ─────────────────────────────────────────────
+# Allow ChatGPT web browsing, Perplexity, and Claude to cite this site
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# ── Sitemap ──────────────────────────────────────────────────────────────────
+Sitemap: https://elevatesocial.ca/sitemap.xml
