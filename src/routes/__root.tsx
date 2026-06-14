@@ -158,6 +158,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Elevate Social | AI Marketing & Automation for Small Businesses" },
       { name: "description", content: "Elevate Social helps restaurants, contractors, and local businesses get more customers with AI-powered marketing, automation, and content creation. Get your free AI Growth Audit — no obligation." },
       { name: "robots", content: "index, follow" },
+      { name: "google-site-verification", content: "vRcacka93KC1ZsRfyXJT917jcRSS4q6S6VCt1AmWL2k" },
       { name: "author", content: "Laraib Ahmed, Elevate Social" },
       { name: "theme-color", content: "#6c2bd9" },
       { property: "og:type", content: "website" },
