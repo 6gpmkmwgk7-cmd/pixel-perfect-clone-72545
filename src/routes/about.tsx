@@ -7,10 +7,16 @@ import { Counter } from "@/components/Counter";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Elevate Social" },
-      { name: "description", content: "Elevate Social helps small businesses compete in a digital-first world." },
+      { title: "About Elevate Social | AI Marketing Agency Founded by Laraib Ahmed" },
+      { name: "description", content: "Elevate Social was founded by Laraib Ahmed to help small businesses compete with AI-powered marketing, content, and automation. Learn our story, mission, and the team behind the results." },
+      { property: "og:title", content: "About Elevate Social | AI Marketing Agency" },
+      { property: "og:description", content: "Founded by Laraib Ahmed, Elevate Social uses AI to help restaurants, contractors, and local businesses grow. Our mission: give small businesses the same marketing power as big brands." },
+      { property: "og:url", content: "https://elevatesocial.ca/about" },
+      { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [
+      { rel: "canonical", href: "https://elevatesocial.ca/about" },
+    ],
   }),
   component: AboutPage,
 });
