@@ -6,10 +6,16 @@ import { ParticleField } from "@/components/ParticleField";
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "Pricing — Elevate Social" },
-      { name: "description", content: "AI-powered growth packages from $99." },
+      { title: "Pricing | AI Marketing for Small Businesses Starting at $149 | Elevate Social" },
+      { name: "description", content: "Transparent, affordable AI marketing pricing. Business Presence Launch $149 one-time, AI Content Engine $299/month, AI Growth System $499/month. Free audit available." },
+      { property: "og:title", content: "Pricing | AI Marketing Starting at $149 | Elevate Social" },
+      { property: "og:description", content: "Simple, results-focused pricing for small business AI marketing. Start with a free AI Growth Audit, then choose the package that fits your growth goals." },
+      { property: "og:url", content: "https://elevatesocial.ca/pricing" },
+      { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/pricing" }],
+    links: [
+      { rel: "canonical", href: "https://elevatesocial.ca/pricing" },
+    ],
   }),
   component: PricingPage,
 });
