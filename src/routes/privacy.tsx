@@ -3,8 +3,12 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Elevate Social" },
-      { name: "description", content: "How Elevate Social collects, uses, and protects your information." },
+      { title: "Privacy Policy | Elevate Social" },
+      { name: "description", content: "Privacy policy for Elevate Social — how we collect, use, and protect your information." },
+      { name: "robots", content: "noindex, follow" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://elevatesocial.ca/privacy" },
     ],
   }),
   component: PrivacyPage,
