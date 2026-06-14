@@ -6,10 +6,31 @@ import { ParticleField } from "@/components/ParticleField";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Elevate Social" },
-      { name: "description", content: "Growth solutions designed for modern businesses." },
+      { title: "AI Marketing Services for Small Businesses | Elevate Social" },
+      { name: "description", content: "AI-powered marketing, content creation, website design, and automation for restaurants, contractors, and local service businesses. Starting at $149 CAD. Free audit included." },
+      { property: "og:title", content: "AI Marketing Services for Small Businesses | Elevate Social" },
+      { property: "og:description", content: "From website design to AI content and automation — Elevate Social offers flexible packages starting at $149 CAD. Book your free AI Growth Audit today." },
+      { property: "og:url", content: "https://elevatesocial.ca/services" },
+      { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: [
+      { rel: "canonical", href: "https://elevatesocial.ca/services" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Elevate Social Services",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, item: { "@type": "Service", name: "Business Presence Launch", url: "https://elevatesocial.ca/services", description: "Professional website and Google Business Profile for local businesses. One-time $149 CAD.", provider: { "@id": "https://elevatesocial.ca/#organization" }, offers: { "@type": "Offer", price: "149", priceCurrency: "CAD" } } },
+            { "@type": "ListItem", position: 2, item: { "@type": "Service", name: "AI Content Engine", url: "https://elevatesocial.ca/services", description: "Monthly AI content creation for social media and email. $299 CAD/month.", provider: { "@id": "https://elevatesocial.ca/#organization" }, offers: { "@type": "Offer", price: "299", priceCurrency: "CAD" } } },
+            { "@type": "ListItem", position: 3, item: { "@type": "Service", name: "AI Growth System", url: "https://elevatesocial.ca/services", description: "Full-service AI marketing partnership including content, automation, SEO, and ads. $499 CAD/month.", provider: { "@id": "https://elevatesocial.ca/#organization" }, offers: { "@type": "Offer", price: "499", priceCurrency: "CAD" } } },
+          ],
+        }),
+      },
+    ],
   }),
   component: ServicesPage,
 });
