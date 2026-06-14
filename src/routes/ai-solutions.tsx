@@ -10,10 +10,42 @@ import { NetworkNodes } from "@/components/NetworkNodes";
 export const Route = createFileRoute("/ai-solutions")({
   head: () => ({
     meta: [
-      { title: "AI Solutions — Elevate Social" },
-      { name: "description", content: "Explore the AI systems powering Elevate Social: content generation, lead capture, proposals, client onboarding, and social media automation." },
+      { title: "AI Automation Solutions for Small Businesses | Elevate Social" },
+      { name: "description", content: "Automate reviews, lead follow-up, appointment reminders, and customer re-engagement with Elevate Social's AI workflow systems. One-time setup from $299 CAD." },
+      { property: "og:title", content: "AI Automation Solutions for Small Businesses | Elevate Social" },
+      { property: "og:description", content: "Stop losing leads and reviews to manual follow-up. Elevate Social builds AI automation systems that run 24/7 — review requests, lead nurture, appointment reminders, and more." },
+      { property: "og:url", content: "https://elevatesocial.ca/ai-solutions" },
+      { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/ai-solutions" }],
+    links: [
+      { rel: "canonical", href: "https://elevatesocial.ca/ai-solutions" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "AI Business Automation",
+          url: "https://elevatesocial.ca/ai-solutions",
+          description: "AI-powered workflow automation for small businesses: automated review requests, lead follow-up sequences, appointment reminders, and customer re-engagement systems.",
+          provider: { "@id": "https://elevatesocial.ca/#organization" },
+          serviceType: "Business Automation",
+          areaServed: [
+            { "@type": "Country", name: "Canada" },
+            { "@type": "Country", name: "United States" },
+            { "@type": "Country", name: "United Kingdom" },
+          ],
+          offers: {
+            "@type": "Offer",
+            name: "Automation Setup",
+            price: "299",
+            priceCurrency: "CAD",
+            description: "One-time AI automation workflow setup for your business.",
+          },
+        }),
+      },
+    ],
   }),
   component: AiSolutionsPage,
 });
