@@ -7,10 +7,35 @@ import { ParticleField } from "@/components/ParticleField";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Book Your Free Consultation | Elevate Social" },
-      { name: "description", content: "Let's build your next stage of growth." },
+      { title: "Contact Elevate Social | Get in Touch with Our AI Marketing Team" },
+      { name: "description", content: "Ready to grow your business with AI? Contact Elevate Social — Canada's small business AI marketing agency. We respond within 24 hours." },
+      { property: "og:title", content: "Contact Elevate Social | AI Marketing Agency" },
+      { property: "og:description", content: "Get in touch with Elevate Social's team. Whether you have a question about our services or want to start your free AI Growth Audit, we're here to help." },
+      { property: "og:url", content: "https://elevatesocial.ca/contact" },
+      { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [
+      { rel: "canonical", href: "https://elevatesocial.ca/contact" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Elevate Social",
+          url: "https://elevatesocial.ca/contact",
+          mainEntity: {
+            "@type": "Organization",
+            "@id": "https://elevatesocial.ca/#organization",
+            name: "Elevate Social",
+            email: "mailto:masalaminglecatering@gmail.com",
+            url: "https://elevatesocial.ca",
+            sameAs: ["https://www.instagram.com/elevates_social", "https://www.facebook.com/share/17dkPgp1E4/"],
+          },
+        }),
+      },
+    ],
   }),
   component: ContactPage,
 });
