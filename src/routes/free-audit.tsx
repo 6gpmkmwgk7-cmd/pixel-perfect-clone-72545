@@ -10,10 +10,35 @@ import { ParticleField } from "@/components/ParticleField";
 export const Route = createFileRoute("/free-audit")({
   head: () => ({
     meta: [
-      { title: "Free Audit — Discover Your Growth Opportunities | Elevate Social" },
-      { name: "description", content: "Get a complimentary audit of your online presence." },
+      { title: "Free AI Growth Audit for Small Businesses | Elevate Social" },
+      { name: "description", content: "Get a free AI Growth Audit for your business — no obligation. We analyse your website, Google profile, social media, and competitors, then deliver a personalised action plan." },
+      { property: "og:title", content: "Free AI Growth Audit | Elevate Social" },
+      { property: "og:description", content: "Stop guessing why your competitors rank higher. Get a free personalised AI audit covering your website, local SEO, social presence, and automation gaps. Takes 24 hours. No catch." },
+      { property: "og:url", content: "https://elevatesocial.ca/free-audit" },
+      { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/free-audit" }],
+    links: [
+      { rel: "canonical", href: "https://elevatesocial.ca/free-audit" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Free AI Growth Audit",
+          url: "https://elevatesocial.ca/free-audit",
+          description: "A free, no-obligation analysis of your business's online presence covering website quality, Google Business Profile, social media, competitor positioning, and local SEO — with a personalised action plan.",
+          provider: { "@id": "https://elevatesocial.ca/#organization" },
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "CAD",
+            name: "Free AI Growth Audit",
+          },
+        }),
+      },
+    ],
   }),
   component: FreeAuditPage,
 });
