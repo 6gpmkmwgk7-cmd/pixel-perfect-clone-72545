@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Linkedin, Mail, ShieldCheck } from "lucide-react";
+import { Instagram, Facebook, Linkedin, Mail, ShieldCheck } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/logo.png";
 
@@ -24,9 +24,13 @@ export function SiteFooter() {
               {t("footer.tagline")}
             </p>
             <div className="mt-6 flex items-center gap-3">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+              <a href="https://www.instagram.com/elevates_social" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:border-cyan/40 hover:bg-cyan/10 hover:text-cyan">
                 <Instagram className="h-4 w-4" />
+              </a>
+              <a href="https://www.facebook.com/share/17dkPgp1E4/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:border-cyan/40 hover:bg-cyan/10 hover:text-cyan">
+                <Facebook className="h-4 w-4" />
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:border-cyan/40 hover:bg-cyan/10 hover:text-cyan">
